@@ -1,0 +1,32 @@
+{
+    "name": "baconjs-playground",
+    "description": "An interactive environment for playing around with Bacon.js",
+    "keywords": ["bacon", "baconjs", "frp", "playground"],
+    "homepage": "https://github.com/CRogers/baconjs-playground",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/CRogers/baconjs-playground"
+    },
+    "main" : "./lib/baconjs-playground",
+    "author": "Callum Rogers",
+    "contributors": [
+      {
+        "name": "Callum Rogers"
+      }
+    ],
+    "dependencies": {
+        "gulp": "*",
+        "gulp-coffee": "*",
+        "gulp-mocha": "*",
+        "coffee-script": "*",
+        "del": "*",
+        "mocha": "*",
+        "chai": "*",
+        "sinon": "1.12.0",
+        "gulp-jade": "*",
+        "gulp-sass": "*",
+        "baconjs": "*",
+        "browserify": "*"
+    },
+    "version": "0.1.0"
+}
