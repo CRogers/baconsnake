@@ -18,6 +18,7 @@
         "gulp": "*",
         "gulp-coffee": "*",
         "gulp-mocha": "*",
+        "gulp-rename": "*",
         "coffee-script": "*",
         "del": "*",
         "mocha": "*",
@@ -26,7 +27,9 @@
         "gulp-jade": "*",
         "gulp-sass": "*",
         "baconjs": "*",
-        "browserify": "*"
+        "vinyl-transform": "*",
+        "browserify": "*",
+        "brace": "*"
     },
     "version": "0.1.0"
 }
