@@ -2,12 +2,15 @@ document.addEventListener 'DOMContentLoaded', ->
   ace = require('brace')
   require('brace/mode/coffee')
   require('brace/mode/html')
+  require('brace/mode/css')
   require('brace/theme/monokai')
 
-  editorCoffee = ace.edit('editor-coffee')
-  editorCoffee.getSession().setMode('ace/mode/coffee')
-  editorCoffee.setTheme('ace/theme/monokai')
+  makeEditor = (id, mode) ->
+    editor = ace.edit(id)
+    editor.getSession().setMode("ace/mode/#{mode}")
+    editor.setTheme('ace/theme/monokai')
+    return editor
 
-  editorHtml = ace.edit('editor-html')
-  editorHtml.getSession().setMode('ace/mode/html')
-  editorHtml.setTheme('ace/theme/monokai')
+  makeEditor('editor-coffee', 'coffee')
+  makeEditor('editor-html', 'html')
+  makeEditor('editor-css', 'css')
