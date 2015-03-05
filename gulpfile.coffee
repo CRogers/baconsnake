@@ -42,12 +42,14 @@ gulp.task 'browserify', ['coffee'], ->
 gulp.task 'clean', ->
   del(['build/*'])
 
+gulp.task 'build', ['jade', 'sass', 'browserify']
+
 gulp.task 'watch', ->
   gulp.watch(paths.coffee, ['browserify'])
   gulp.watch(paths.sass, ['sass'])
   gulp.watch(paths.jade, ['jade'])
 
-gulp.task 'serve', ['watch'], ->
+gulp.task 'serve', ['build', 'watch'], ->
   browserSync
     server: {baseDir: 'build'}
 
