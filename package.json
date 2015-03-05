@@ -29,7 +29,8 @@
         "baconjs": "*",
         "vinyl-transform": "*",
         "browserify": "*",
-        "brace": "*"
+        "brace": "*",
+        "browser-sync": "*"
     },
     "version": "0.1.0"
 }

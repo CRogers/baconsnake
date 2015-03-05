@@ -1,29 +1,22 @@
-#container
-  position: relative
-  padding-top: 100%
-
-#container > *
-  position: absolute
-  padding-top: 50%
-  padding-right: 50%
-
 @mixin editor
   position: absolute
 
+$split: 50%
+
 @mixin north
   top: 0
-  bottom: 50%
+  bottom: 100% - $split
 
 @mixin south
-  top: 50%
+  top: $split
   bottom: 0
 
 @mixin west
   left: 0
-  right: 50%
+  right: 100% - $split
 
 @mixin east
-  left: 50%
+  left: $split
   right: 0
 
 #editor-coffee
@@ -37,3 +30,15 @@
   +south()
   +west()
   background: orangered
+
+#editor-css
+  +editor()
+  +north()
+  +east()
+  background: purple
+
+#output
+  +editor()
+  +south()
+  +east()
+  background: yellow

@@ -7,6 +7,7 @@ sass = require('gulp-sass')
 transform = require('vinyl-transform')
 browserify = require('browserify')
 rename = require('gulp-rename')
+browserSync = require('browser-sync')
 
 browserified = transform (filename) ->
   browserify(filename).bundle()
@@ -25,13 +26,14 @@ gulp.task 'sass', ->
   gulp.src paths.sass
     .pipe(sass(indentedSyntax: true))
     .pipe(gulp.dest('./build/css/'))
+    .pipe(browserSync.reload(stream: true))
 
 gulp.task 'jade', ->
   gulp.src paths.jade
     .pipe(jade())
     .pipe(gulp.dest('./build/'))
 
-gulp.task 'browserify', ['coffee', 'sass', 'jade'], ->
+gulp.task 'browserify', ['coffee'], ->
   gulp.src('./build/scripts/app.js')
     .pipe(browserified)
     .pipe(rename('baconjs-playground.js'))
@@ -42,8 +44,12 @@ gulp.task 'clean', ->
 
 gulp.task 'watch', ->
   gulp.watch(paths.coffee, ['browserify'])
-  gulp.watch(paths.sass, ['browserify'])
-  gulp.watch(paths.jade, ['browserify'])
+  gulp.watch(paths.sass, ['sass'])
+  gulp.watch(paths.jade, ['jade'])
+
+gulp.task 'serve', ['watch'], ->
+  browserSync
+    server: {baseDir: 'build'}
 
 gulp.task 'test', ['coffee'], ->
   gulp.src('./build/scripts/*-spec.js', {read: false})
