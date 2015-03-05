@@ -9,8 +9,9 @@ browserify = require('browserify')
 rename = require('gulp-rename')
 browserSync = require('browser-sync')
 
-browserified = transform (filename) ->
-  browserify(filename).bundle()
+browserified = ->
+  transform (filename) ->
+    browserify(filename).bundle()
 
 paths =
   coffee: './src/scripts/*.coffee'
@@ -35,7 +36,7 @@ gulp.task 'jade', ->
 
 gulp.task 'browserify', ['coffee'], ->
   gulp.src('./build/scripts/app.js')
-    .pipe(browserified)
+    .pipe(browserified())
     .pipe(rename('baconjs-playground.js'))
     .pipe(gulp.dest('./build/scripts/'))
 
