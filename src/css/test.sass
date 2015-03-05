@@ -1,7 +1,39 @@
+#container
+  position: relative
+  padding-top: 100%
+
+#container > *
+  position: absolute
+  padding-top: 50%
+  padding-right: 50%
+
+@mixin editor
+  position: absolute
+
+@mixin north
+  top: 0
+  bottom: 50%
+
+@mixin south
+  top: 50%
+  bottom: 0
+
+@mixin west
+  left: 0
+  right: 50%
+
+@mixin east
+  left: 50%
+  right: 0
+
 #editor-coffee
-  width: 500px
-  height: 500px
+  +editor()
+  +north()
+  +west()
+  background: green
 
 #editor-html
-  width: 500px
-  height: 500px
+  +editor()
+  +south()
+  +west()
+  background: orangered
