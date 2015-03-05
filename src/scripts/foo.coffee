@@ -12,5 +12,8 @@ document.addEventListener 'DOMContentLoaded', ->
     return editor
 
   makeEditor('editor-coffee', 'coffee')
-  makeEditor('editor-html', 'html')
+  window.ed = htmlEditor = makeEditor('editor-html', 'html')
   makeEditor('editor-css', 'css')
+
+  htmlEditor.getSession().on 'change', ->
+    document.querySelector('#output').innerHTML = htmlEditor.getSession().getValue()
