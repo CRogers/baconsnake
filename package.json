@@ -19,6 +19,7 @@
         "gulp-coffee": "*",
         "gulp-mocha": "*",
         "gulp-rename": "*",
+        "gulp-plumber": "*",
         "coffee-script": "*",
         "del": "*",
         "mocha": "*",
@@ -30,7 +31,8 @@
         "vinyl-transform": "*",
         "browserify": "*",
         "brace": "*",
-        "browser-sync": "*"
+        "browser-sync": "*",
+        "virtual-dom": "*"
     },
     "version": "0.1.0"
 }

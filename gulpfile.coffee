@@ -7,6 +7,7 @@ sass = require('gulp-sass')
 transform = require('vinyl-transform')
 browserify = require('browserify')
 rename = require('gulp-rename')
+plumber = require('gulp-plumber')
 browserSync = require('browser-sync')
 
 browserified = ->
@@ -20,6 +21,7 @@ paths =
 
 gulp.task 'coffee', ->
   gulp.src paths.coffee
+    .pipe(plumber())
     .pipe(coffee())
     .pipe(gulp.dest('./build/scripts/'))
 
