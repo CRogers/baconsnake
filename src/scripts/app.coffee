@@ -9,8 +9,8 @@ vdomBaconjsRenderder = require('./virtual-dom-renderer')
 
 {Keys} = inputs
 
-WIDTH = 30
-HEIGHT = 30
+WIDTH = 10
+HEIGHT = 10
 
 snake = (keyPresses, ticks) ->
   property = (prop, submatcher) ->
@@ -60,12 +60,15 @@ snake = (keyPresses, ticks) ->
     if currentFoodPosition.equals(snakeHeadPosition)
       return Vector.randomIntVector(WIDTH, HEIGHT)
     return currentFoodPosition
-  .skipDuplicates().log()
+  .skipDuplicates()
 
-  selectedSquares = position
-    .slidingWindow(20)
+  snakeLength = foodPosition.scan 2, (count) -> count + 1
+
+  snake = position
+    .slidingWindowBy(snakeLength)
     .map _.compact
-    .combine foodPosition, (snakePositions, currentFoodPosition) ->
+
+  selectedSquares = snake.combine foodPosition, (snakePositions, currentFoodPosition) ->
       snakePositions.concat(currentFoodPosition)
     .map (positions) -> grid(WIDTH, HEIGHT, 2, 20, positions)
 
@@ -73,4 +76,4 @@ snake = (keyPresses, ticks) ->
 
 
 $ ->
-  snake(inputs.keyPresses(), Bacon.repeatedly(100, [null]))
+  snake(inputs.keyPresses(), Bacon.repeatedly(200, [null]))
