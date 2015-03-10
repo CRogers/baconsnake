@@ -24,9 +24,9 @@ snake = (keyPresses, ticks) ->
   turns = lefts.merge(rights)
 
   Direction =
-    NORTH: new Vector(0, 1)
+    NORTH: new Vector(0, -1)
     EAST:  new Vector(1, 0)
-    SOUTH: new Vector(0, -1)
+    SOUTH: new Vector(0, 1)
     WEST:  new Vector(-1, 0)
 
   turnAntiClockwise = (direction) ->
@@ -43,11 +43,11 @@ snake = (keyPresses, ticks) ->
       when Direction.SOUTH then Direction.WEST
       when Direction.WEST  then Direction.NORTH
 
-  directionFacing = turns.scan Direction.NORTH, (currentDirection, turn) ->
+  directionFacing = turns.scan Direction.SOUTH, (currentDirection, turn) ->
     switch turn
       when 'left'  then turnAntiClockwise(currentDirection)
       when 'right' then turnClockwise(currentDirection)
-
+  .log()
   directionFacingAtTick = directionFacing.sampledBy(ticks)
 
   position = directionFacingAtTick.scan new Vector(0, 0), (currentPosition, direction) ->
@@ -57,7 +57,7 @@ snake = (keyPresses, ticks) ->
 
   selectedSquares = position
     .slidingWindow(3)
-    .map (positions) -> grid(10, 10, 2, 10, _.compact positions)
+    .map (positions) -> grid(10, 10, 2, 20, _.compact positions)
 
   vdomBaconjsRenderder(document.body, selectedSquares)
 
