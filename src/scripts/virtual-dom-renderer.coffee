@@ -10,17 +10,18 @@ window.Bacon = Bacon
 vdomBaconjsRenderder = (parentElement, vtreeStream) ->
   domNode = vtreeStream
     .take(1)
-    .map (tree) ->
-      rootNode = createElement(tree)
-      parentElement.appendChild(rootNode)
-      return rootNode
+    .map createElement
     .toProperty()
+
+  domNode.onValue (rootNode) ->
+    parentElement.appendChild(rootNode)
 
   vtreeStream
     .slidingWindow(2, 2)
     .map ([oldTree, newTree]) -> diff(oldTree, newTree)
     .combine domNode, (patches, rootNode) -> [patches, rootNode]
     .onValue ([patches, rootNode]) ->
-      patch(rootNode, patches)
+      window.requestAnimationFrame ->
+        patch(rootNode, patches)
 
 module.exports = vdomBaconjsRenderder

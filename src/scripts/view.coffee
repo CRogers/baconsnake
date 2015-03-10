@@ -15,4 +15,7 @@ grid = (width, height, gap, size) -> h '.cat', do ->
 
 
 document.addEventListener 'DOMContentLoaded', ->
-  vdomBaconjsRenderder document.body, Bacon.repeatedly(100, [grid(10, 10, 2, 10)])
+  i = 0
+  vdomBaconjsRenderder document.body, Bacon.fromPoll 16, ->
+    i = (i + 1) % 600 + 1
+    grid(10, 10, i / 10, 10 + i / 20)
