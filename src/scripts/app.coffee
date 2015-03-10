@@ -50,17 +50,23 @@ snake = (keyPresses, ticks) ->
     switch turn
       when 'left'  then turnAntiClockwise(currentDirection)
       when 'right' then turnClockwise(currentDirection)
-  .log()
+
   directionFacingAtTick = directionFacing.sampledBy(ticks)
 
   position = directionFacingAtTick.scan new Vector(0, 0), (currentPosition, direction) ->
     currentPosition.add(direction).modulo(new Vector(WIDTH, HEIGHT))
 
-  position.map('.toString')
+  foodPosition = position.scan new Vector(5, 5), (currentFoodPosition, snakeHeadPosition) ->
+    if currentFoodPosition.equals(snakeHeadPosition)
+      return Vector.randomIntVector(WIDTH, HEIGHT)
+    return currentFoodPosition
+  .skipDuplicates().log()
 
   selectedSquares = position
     .slidingWindow(20)
     .map _.compact
+    .combine foodPosition, (snakePositions, currentFoodPosition) ->
+      snakePositions.concat(currentFoodPosition)
     .map (positions) -> grid(WIDTH, HEIGHT, 2, 20, positions)
 
   vdomBaconjsRenderder(document.body, selectedSquares)
