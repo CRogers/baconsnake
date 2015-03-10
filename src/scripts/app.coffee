@@ -16,29 +16,29 @@ rights = inputs.filter(isKey(Keys.RIGHT)).map('right')
 turns = lefts.merge(rights)
 
 Direction =
-  NORTH: '↑'
-  EAST:  '→'
-  SOUTH: '↓'
-  WEST:  '←'
+  NORTH: '^'
+  EAST:  '>'
+  SOUTH: 'v'
+  WEST:  '<'
 
-turnLeft = (direction) ->
+turnAntiClockwise = (direction) ->
   switch direction
     when Direction.NORTH then Direction.WEST
-    when Direction.EAST then Direction.NORTH
+    when Direction.EAST  then Direction.NORTH
     when Direction.SOUTH then Direction.EAST
-    when Direction.WEST then Direction.SOUTH
+    when Direction.WEST  then Direction.SOUTH
 
-turnRight = (direction) ->
+turnClockwise = (direction) ->
   switch direction
     when Direction.NORTH then Direction.EAST
-    when Direction.EAST then Direction.SOUTH
+    when Direction.EAST  then Direction.SOUTH
     when Direction.SOUTH then Direction.WEST
-    when Direction.WEST then Direction.NORTH
+    when Direction.WEST  then Direction.NORTH
 
 directionFacing = turns.scan Direction.NORTH, (currentDirection, turn) ->
   switch turn
-    when 'left' then turnLeft(currentDirection)
-    when 'right' then turnRight(currentDirection)
+    when 'left'  then turnAntiClockwise(currentDirection)
+    when 'right' then turnClockwise(currentDirection)
 
 
 directionFacing.log()
