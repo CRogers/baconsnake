@@ -16,10 +16,10 @@ rights = inputs.filter(isKey(Keys.RIGHT)).map('right')
 turns = lefts.merge(rights)
 
 Direction =
-  NORTH: 'north'
-  SOUTH: 'south'
-  EAST: 'east'
-  WEST: 'west'
+  NORTH: '↑'
+  EAST:  '→'
+  SOUTH: '↓'
+  WEST:  '←'
 
 turnLeft = (direction) ->
   switch direction
