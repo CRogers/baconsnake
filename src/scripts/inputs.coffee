@@ -1,10 +1,12 @@
 Bacon = require('baconjs')
 $ = require('jquery')
 
-inputs = $(document).asEventStream('keydown')
+keyPresses = -> $(document).asEventStream('keydown')
+
+ticks = -> $('#tick').asEventStream('click')
 
 Keys =
   LEFT: 37
   RIGHT: 39
 
-module.exports = {inputs, Keys}
+module.exports = {keyPresses, ticks, Keys}

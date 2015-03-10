@@ -1,44 +1,64 @@
+$ = require('jquery')
+
 require('./libsetup')
 require('./view')
-{inputs, Keys} = require('./inputs')
+inputs = require('./inputs')
 
-property = (prop, submatcher) ->
-  return (object) -> submatcher(object[prop])
+{Keys} = inputs
 
-equalTo = (expectedValue) ->
-  return (value) -> value == expectedValue
+class Vector
+  constructor: (@x, @y) ->
 
-isKey = (key) -> property('which', equalTo(key))
+  add: (vector) ->
+    new Vector(@x + vector.x, @y + vector.y)
 
-lefts = inputs.filter(isKey(Keys.LEFT)).map('left')
-rights = inputs.filter(isKey(Keys.RIGHT)).map('right')
+  toString: -> "(#{@x},#{@y})"
 
-turns = lefts.merge(rights)
+snake = (keyPresses, ticks) ->
+  property = (prop, submatcher) ->
+    return (object) -> submatcher(object[prop])
 
-Direction =
-  NORTH: '^'
-  EAST:  '>'
-  SOUTH: 'v'
-  WEST:  '<'
+  equalTo = (expectedValue) ->
+    return (value) -> value == expectedValue
 
-turnAntiClockwise = (direction) ->
-  switch direction
-    when Direction.NORTH then Direction.WEST
-    when Direction.EAST  then Direction.NORTH
-    when Direction.SOUTH then Direction.EAST
-    when Direction.WEST  then Direction.SOUTH
+  isKey = (key) -> property('which', equalTo(key))
 
-turnClockwise = (direction) ->
-  switch direction
-    when Direction.NORTH then Direction.EAST
-    when Direction.EAST  then Direction.SOUTH
-    when Direction.SOUTH then Direction.WEST
-    when Direction.WEST  then Direction.NORTH
+  lefts = keyPresses.filter(isKey(Keys.LEFT)).map('left')
+  rights = keyPresses.filter(isKey(Keys.RIGHT)).map('right')
 
-directionFacing = turns.scan Direction.NORTH, (currentDirection, turn) ->
-  switch turn
-    when 'left'  then turnAntiClockwise(currentDirection)
-    when 'right' then turnClockwise(currentDirection)
+  turns = lefts.merge(rights)
 
+  Direction =
+    NORTH: new Vector(0, 1)
+    EAST:  new Vector(1, 0)
+    SOUTH: new Vector(0, -1)
+    WEST:  new Vector(-1, 0)
 
-directionFacing.log()
+  turnAntiClockwise = (direction) ->
+    switch direction
+      when Direction.NORTH then Direction.WEST
+      when Direction.EAST  then Direction.NORTH
+      when Direction.SOUTH then Direction.EAST
+      when Direction.WEST  then Direction.SOUTH
+
+  turnClockwise = (direction) ->
+    switch direction
+      when Direction.NORTH then Direction.EAST
+      when Direction.EAST  then Direction.SOUTH
+      when Direction.SOUTH then Direction.WEST
+      when Direction.WEST  then Direction.NORTH
+
+  directionFacing = turns.scan Direction.NORTH, (currentDirection, turn) ->
+    switch turn
+      when 'left'  then turnAntiClockwise(currentDirection)
+      when 'right' then turnClockwise(currentDirection)
+
+  directionFacingAtTick = directionFacing.sampledBy(ticks)
+
+  position = directionFacingAtTick.scan new Vector(0, 0), (currentPosition, direction) ->
+    currentPosition.add(direction)
+
+  position.map('.toString').log()
+
+$ ->
+  snake(inputs.keyPresses(), inputs.ticks())
