@@ -9,6 +9,9 @@ vdomBaconjsRenderder = require('./virtual-dom-renderer')
 
 {Keys} = inputs
 
+WIDTH = 10
+HEIGHT = 10
+
 snake = (keyPresses, ticks) ->
   property = (prop, submatcher) ->
     return (object) -> submatcher(object[prop])
@@ -51,13 +54,14 @@ snake = (keyPresses, ticks) ->
   directionFacingAtTick = directionFacing.sampledBy(ticks)
 
   position = directionFacingAtTick.scan new Vector(0, 0), (currentPosition, direction) ->
-    currentPosition.add(direction)
+    currentPosition.add(direction).modulo(new Vector(WIDTH, HEIGHT))
 
   position.map('.toString')
 
   selectedSquares = position
     .slidingWindow(3)
-    .map (positions) -> grid(10, 10, 2, 20, _.compact positions)
+    .map _.compact
+    .map (positions) -> grid(WIDTH, HEIGHT, 2, 20, positions)
 
   vdomBaconjsRenderder(document.body, selectedSquares)
 

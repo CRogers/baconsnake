@@ -9,7 +9,7 @@ Keys =
   SPACE: 32
 
 ticks = ->
-  spaces = keyPresses().filter (event) -> event.which == Keys.SPACE
+  spaces = $(document).asEventStream('keydown').filter (event) -> event.which == Keys.SPACE
   $('#tick').asEventStream('click').merge(spaces)
 
 module.exports = {keyPresses, ticks, Keys}
