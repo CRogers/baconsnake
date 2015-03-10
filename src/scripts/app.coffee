@@ -59,7 +59,7 @@ snake = (keyPresses, ticks) ->
   position.map('.toString')
 
   selectedSquares = position
-    .slidingWindow(3)
+    .slidingWindow(20)
     .map _.compact
     .map (positions) -> grid(WIDTH, HEIGHT, 2, 20, positions)
 
@@ -67,4 +67,4 @@ snake = (keyPresses, ticks) ->
 
 
 $ ->
-  snake(inputs.keyPresses(), inputs.ticks())
+  snake(inputs.keyPresses(), Bacon.repeatedly(100, [null]))
