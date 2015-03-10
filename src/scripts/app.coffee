@@ -9,8 +9,8 @@ vdomBaconjsRenderder = require('./virtual-dom-renderer')
 
 {Keys} = inputs
 
-WIDTH = 10
-HEIGHT = 10
+WIDTH = 30
+HEIGHT = 30
 
 snake = (keyPresses, ticks) ->
   property = (prop, submatcher) ->
