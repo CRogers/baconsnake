@@ -48,7 +48,7 @@ gulp.task 'clean', ->
 gulp.task 'build', ['jade', 'sass', 'browserify']
 
 gulp.task 'watch', ->
-  gulp.watch(paths.coffee, ['browserify'])
+  gulp.watch(paths.coffee, ['browserify', browserSync.reload])
   gulp.watch(paths.sass, ['sass'])
   gulp.watch(paths.jade, ['jade'])
 
