@@ -10,8 +10,35 @@ equalTo = (expectedValue) ->
 
 isKey = (key) -> property('which', equalTo(key))
 
-lefts = inputs.filter isKey(Keys.LEFT)
-rights = inputs.filter isKey(Keys.RIGHT)
+lefts = inputs.filter(isKey(Keys.LEFT)).map('left')
+rights = inputs.filter(isKey(Keys.RIGHT)).map('right')
 
-lefts.map('left').log()
-rights.map('right').log()
+turns = lefts.merge(rights)
+
+Direction =
+  NORTH: 'north'
+  SOUTH: 'south'
+  EAST: 'east'
+  WEST: 'west'
+
+turnLeft = (direction) ->
+  switch direction
+    when Direction.NORTH then Direction.WEST
+    when Direction.EAST then Direction.NORTH
+    when Direction.SOUTH then Direction.EAST
+    when Direction.WEST then Direction.SOUTH
+
+turnRight = (direction) ->
+  switch direction
+    when Direction.NORTH then Direction.EAST
+    when Direction.EAST then Direction.SOUTH
+    when Direction.SOUTH then Direction.WEST
+    when Direction.WEST then Direction.NORTH
+
+directionFacing = turns.scan Direction.NORTH, (currentDirection, turn) ->
+  switch turn
+    when 'left' then turnLeft(currentDirection)
+    when 'right' then turnRight(currentDirection)
+
+
+directionFacing.log()
