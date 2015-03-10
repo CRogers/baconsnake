@@ -1,4 +1,5 @@
 $ = require('jquery')
+_ = require('lodash')
 
 require('./libsetup')
 Vector = require('./vector')
@@ -52,9 +53,12 @@ snake = (keyPresses, ticks) ->
   position = directionFacingAtTick.scan new Vector(0, 0), (currentPosition, direction) ->
     currentPosition.add(direction)
 
-  position.map('.toString').log()
+  position.map('.toString')
 
-  selectedSquares = position.map (position) -> grid(10, 10, 2, 10, [position])
+  selectedSquares = position
+    .slidingWindow(3)
+    .map (positions) -> grid(10, 10, 2, 10, _.compact positions)
+
   vdomBaconjsRenderder(document.body, selectedSquares)
 
 
