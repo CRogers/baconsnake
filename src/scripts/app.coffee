@@ -1,18 +1,12 @@
 $ = require('jquery')
 
 require('./libsetup')
-require('./view')
+Vector = require('./vector')
+{grid} = require('./view')
 inputs = require('./inputs')
+vdomBaconjsRenderder = require('./virtual-dom-renderer')
 
 {Keys} = inputs
-
-class Vector
-  constructor: (@x, @y) ->
-
-  add: (vector) ->
-    new Vector(@x + vector.x, @y + vector.y)
-
-  toString: -> "(#{@x},#{@y})"
 
 snake = (keyPresses, ticks) ->
   property = (prop, submatcher) ->
@@ -59,6 +53,10 @@ snake = (keyPresses, ticks) ->
     currentPosition.add(direction)
 
   position.map('.toString').log()
+
+  selectedSquares = position.map (position) -> grid(10, 10, 2, 10, [position])
+  vdomBaconjsRenderder(document.body, selectedSquares)
+
 
 $ ->
   snake(inputs.keyPresses(), inputs.ticks())

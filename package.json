@@ -34,7 +34,8 @@
         "brace": "*",
         "browser-sync": "*",
         "virtual-dom": "*",
-        "jquery": "*"
+        "jquery": "*",
+        "lodash": "*"
     },
     "version": "0.1.0"
 }
