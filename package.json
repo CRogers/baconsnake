@@ -33,7 +33,8 @@
         "browserify": "*",
         "brace": "*",
         "browser-sync": "*",
-        "virtual-dom": "*"
+        "virtual-dom": "*",
+        "jquery": "*"
     },
     "version": "0.1.0"
 }
