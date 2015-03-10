@@ -1,31 +1,17 @@
 h = require('virtual-dom/h')
-diff = require('virtual-dom/diff')
-patch = require('virtual-dom/patch')
-createElement = require('virtual-dom/create-element')
-
+vdomBaconjsRenderder = require('./virtual-dom-renderer')
 Bacon = require('baconjs')
 
-window.Bacon = Bacon
+px = (num) -> "#{num}px"
 
-vdomBaconjsRenderder = (parentElement, vtreeStream) ->
-  domNode = vtreeStream
-    .take(1)
-    .map (tree) ->
-      rootNode = createElement(tree)
-      parentElement.appendChild(rootNode)
-      return rootNode
-    .toProperty()
+square = (x, y, size) ->
+  h '.square', { style: { left: px(x), top: px(y), width: px(size), height: px(size) } }
 
-  vtreeStream
-    .slidingWindow(2, 2)
-    .map ([oldTree, newTree]) -> diff(oldTree, newTree)
-    .combine domNode, (patches, rootNode) -> [patches, rootNode]
-    .onValue ([patches, rootNode]) ->
-      patch(rootNode, patches)
+grid = (width, height, gap) -> h '.cat',
+  for y in [0..height]
+    for x in [0..width]
+      square(x * gap, y * gap, gap - 1)
 
-tree = h('div', {className: 'foo'})
-
-stream = Bacon.repeatedly(1000, [tree])
 
 document.addEventListener 'DOMContentLoaded', ->
-  vdomBaconjsRenderder(document.body, stream)
+  vdomBaconjsRenderder document.body, Bacon.repeatedly(100, [grid(10, 10, 10)])

@@ -1,40 +1,6 @@
-@mixin editor
+.cat
+  position: relative
+
+.square
   position: absolute
-
-$split: 50%
-
-@mixin north
-  top: 0
-  bottom: 100% - $split
-
-@mixin south
-  top: $split
-  bottom: 0
-
-@mixin west
-  left: 0
-  right: 100% - $split
-
-@mixin east
-  left: $split
-  right: 0
-
-#editor-coffee
-  +editor()
-  +north()
-  +west()
-
-#editor-html
-  +editor()
-  +south()
-  +west()
-
-#editor-css
-  +editor()
-  +north()
-  +east()
-
-#output
-  +editor()
-  +south()
-  +east()
+  background: green

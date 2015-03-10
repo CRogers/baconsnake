@@ -1,2 +1,1 @@
-require('./foo')
 require('./view')
