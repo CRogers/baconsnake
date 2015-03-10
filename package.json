@@ -20,6 +20,7 @@
         "gulp-mocha": "*",
         "gulp-rename": "*",
         "gulp-plumber": "*",
+        "gulp-notify": "*",
         "coffee-script": "*",
         "del": "*",
         "mocha": "*",
