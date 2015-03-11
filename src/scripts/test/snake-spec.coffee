@@ -19,9 +19,27 @@ describe 'snake', ->
   it 'should have head at (1, 0) after one right', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
       .whenGivenEvents(Keys.RIGHT)
-    expect(output).to.deep.equal [makeVector(0, 0), makeVector(1, 0)]
+
+    expect(output).to.deep.equal [
+      makeVector(0, 0),
+      makeVector(1, 0)
+    ]
 
   it 'should have head at (2, 0) after two rights', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
       .whenGivenEvents(Keys.RIGHT, Keys.RIGHT)
-    expect(output).to.deep.equal [makeVector(0, 0), makeVector(1, 0), makeVector(2, 0)]
+
+    expect(output).to.deep.equal [
+      makeVector(0, 0),
+      makeVector(1, 0),
+      makeVector(2, 0)
+    ]
+
+  it 'should have head at (-1, 0) after one left', ->
+    output = eventsProducedBy(snakeHeadPositionAt00)
+      .whenGivenEvents(Keys.LEFT)
+
+    expect(output).to.deep.equal [
+      makeVector(0, 0),
+      makeVector(-1, 0)
+    ]
