@@ -61,7 +61,7 @@ gulp.task 'browserify', ['coffee'], ->
   gulp.src('./build/scripts/app.js')
     .pipe(plumber())
     .pipe(browserified())
-    .pipe(rename('baconjs-playground.js'))
+    .pipe(rename('baconsnake.js'))
     .pipe(gulp.dest('./build/scripts/'))
 
 gulp.task 'clean', ->

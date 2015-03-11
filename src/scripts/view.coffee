@@ -11,7 +11,7 @@ square = (x, y, size, selected) ->
   className = 'square' + (if selected then ' selected' else '')
   h 'div', { className, style: { left: px(x), top: px(y), width: px(size), height: px(size) } }
 
-grid = (width, height, gap, size, selection) -> h '.cat', do ->
+grid = (width, height, gap, size, selection) -> h '.snake-game', do ->
   actualGap = gap + size
   for y in [0...height]
     for x in [0...width]
