@@ -1,19 +1,33 @@
 _ = require('lodash')
 Bacon = require('baconjs')
 
-Vector = require('./vector')
+makeVector = require('./vector')
 {Keys} = require('./inputs')
 
-snake = (width, height, keyPresses) ->
-  keyPresses.log('key pressed:')
+snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
+  equalTo = (expectedValue) ->
+    return (value) -> value == expectedValue
 
-  snakeHeadPosition = Bacon.once(new Vector(1, 1))
+  lefts = keyPresses.filter(equalTo(Keys.LEFT)).map(makeVector(-1, 0))
+  rights = keyPresses.filter(equalTo(Keys.RIGHT)).map(makeVector(1, 0))
+
+  movementDeltas = lefts.merge(rights)
+
+  headPosition = movementDeltas.scan initialSnakeHeadPosition, (currentPosition, delta) ->
+    return currentPosition.add(delta)
+
+  headPosition.log('head pos:')
+
+  return headPosition
+
+snake = (width, height, keyPresses) ->
+  headPosition = snakeHeadPosition(makeVector(0, 0), keyPresses)
 
   staticSnake = Bacon.combineTemplate
-    head: snakeHeadPosition
+    head: headPosition
     tail: []
     food: null
 
   return staticSnake
 
-module.exports = {snake}
+module.exports = {snake, snakeHeadPosition}

@@ -14,9 +14,20 @@ class Vector
   @randomIntVector: (xmax, ymax) ->
     new Vector(randomInt(xmax), randomInt(ymax))
 
+  @ZERO: new Vector(0, 0)
+
   equals: (vector) ->
     vector.x == @x and vector.y == @y
 
   toString: -> "(#{@x},#{@y})"
 
-module.exports = Vector
+vectors = {}
+
+# memoize so you can just use javascripts === for equality
+makeVector = (x, y) ->
+  key = "#{x}:#{y}"
+  if not vectors[key]?
+    vectors[key] = new Vector(x, y)
+  return vectors[key]
+
+module.exports = makeVector

@@ -3,7 +3,7 @@ vdomBaconjsRenderder = require('./virtual-dom-renderer')
 Bacon = require('baconjs')
 _ = require('lodash')
 
-Vector = require('./vector')
+makeVector = require('./vector')
 
 px = (num) -> "#{num}px"
 
@@ -27,7 +27,7 @@ grid = (width, height, gap, size, snake) -> h '.snake-game', do ->
   actualGap = gap + size
   for y in [0...height]
     for x in [0...width]
-      extraClass = classForPosition(snake, new Vector(x, y))
+      extraClass = classForPosition(snake, makeVector(x, y))
       square(x * actualGap, y * actualGap, size, extraClass)
 
 module.exports = grid

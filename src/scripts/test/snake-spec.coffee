@@ -1,26 +1,22 @@
 expect = require('chai').expect
 sinon = require('sinon')
 
+_ = require('lodash')
 Bacon = require('baconjs')
-Vector = require('../vector')
+makeVector = require('../vector')
 
 {eventsProducedBy} = require('./test-utils')
-{snake} = require('../snake')
+{snake, snakeHeadPosition} = require('../snake')
 {Keys} = require('../inputs')
 
 snake3x3 = (keyPresses) ->
-  return snake(3, 3, keyPresses)
-
-expectVector = (vector) ->
-  toEqual: (expectedVector) ->
-    expect(vector).to.have.deep.property 'x', expectedVector.x
-    expect(vector).to.have.deep.property 'y', expectedVector.y
+  return snake(3, 3, keyPresses, makeVector(0, 0))
 
 describe 'snake', ->
-  it 'should have head at (1, 1) after 3 key presses', ->
-    input = Bacon.fromArray [Keys.LEFT, Keys.RIGHT, Keys.SPACE]
-    firstEvent = eventsProducedBy(snake3x3(input))[0]
-    expectVector(firstEvent.head).toEqual(new Vector(1, 1))
+  it 'should have head at (1, 0) after one right', ->
+    input = Bacon.fromArray [Keys.RIGHT]
+    output = eventsProducedBy(snakeHeadPosition(makeVector(0, 0), input))
+    expect(output).to.deep.equal [makeVector(0, 0)]
 
   it 'should have null food after a key press', ->
     input = Bacon.fromArray [Keys.LEFT]
