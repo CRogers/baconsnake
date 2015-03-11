@@ -15,7 +15,7 @@ classForPosition = (snake, vec) ->
   if vec.equals(snake.head)
     return 'head'
 
-  if vec.equals(snake.food)
+  if snake.food? and vec.equals(snake.food)
     return 'food'
 
   if (_.find snake.tail, (tailVec) -> vec.equals(tailVec))?
@@ -30,4 +30,4 @@ grid = (width, height, gap, size, snake) -> h '.snake-game', do ->
       extraClass = classForPosition(snake, new Vector(x, y))
       square(x * actualGap, y * actualGap, size, extraClass)
 
-module.exports = {grid}
+module.exports = grid

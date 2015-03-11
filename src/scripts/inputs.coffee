@@ -1,7 +1,7 @@
 Bacon = require('baconjs')
 $ = require('jquery')
 
-keyPresses = -> $(document).asEventStream('keydown').throttle(20)
+keyPresses = -> $(document).asEventStream('keydown').throttle(20).map '.which'
 
 Keys =
   LEFT: 37
