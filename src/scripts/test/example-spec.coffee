@@ -1,14 +1,10 @@
 expect = require('chai').expect
 sinon = require('sinon')
-example = require('../example')
 
 Bacon = require('baconjs')
 
-eventsProducedBy = (observable) ->
-  events = []
-  observable.onValue (value) ->
-    events.push(value)
-  return events
+{eventsProducedBy} = require('./test-utils')
+example = require('../example')
 
 describe 'example', ->
   it 'should not produce any events if a single odd number is inputed', ->

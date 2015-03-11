@@ -18,7 +18,7 @@ browserified = ->
 
 paths =
   coffee: './src/scripts/*.coffee'
-  testCoffee: './src/scripts/test/*-spec.coffee'
+  testCoffee: './src/scripts/test/*.coffee'
   sass: './src/css/*.sass'
   jade: './src/html/*.jade'
 
