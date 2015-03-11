@@ -16,12 +16,13 @@ expectVector = (vector) ->
     expect(vector).to.have.deep.property 'x', expectedVector.x
     expect(vector).to.have.deep.property 'y', expectedVector.y
 
-expectHeadOf = (event) ->
-  toEqual: (vector) ->
-    expectVector(event.head).toEqual(vector)
-
 describe 'snake', ->
   it 'should have head at (1, 1) after 3 key presses', ->
     input = Bacon.fromArray [Keys.LEFT, Keys.RIGHT, Keys.SPACE]
     firstEvent = eventsProducedBy(snake3x3(input))[0]
-    expectHeadOf(firstEvent).toEqual(new Vector(1, 1))
+    expectVector(firstEvent.head).toEqual(new Vector(1, 1))
+
+  it 'should have null food after a key press', ->
+    input = Bacon.fromArray [Keys.LEFT]
+    firstEvent = eventsProducedBy(snake3x3(input))[0]
+    expect(firstEvent.food).to.be.null
