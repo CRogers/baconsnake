@@ -1,13 +1,13 @@
 {
-    "name": "baconjs-playground",
-    "description": "An interactive environment for playing around with Bacon.js",
+    "name": "baconsnake",
+    "description": "A Bacon.js based coding exercise to learn FRP by building snake",
     "keywords": ["bacon", "baconjs", "frp", "playground"],
-    "homepage": "https://github.com/CRogers/baconjs-playground",
+    "homepage": "https://github.com/CRogers/baconsnake",
     "repository": {
       "type": "git",
-      "url": "https://github.com/CRogers/baconjs-playground"
+      "url": "https://github.com/CRogers/baconsnake"
     },
-    "main" : "./lib/baconjs-playground",
+    "main" : "./build/baconsnake",
     "author": "Callum Rogers",
     "contributors": [
       {
@@ -31,7 +31,6 @@
         "baconjs": "*",
         "vinyl-transform": "*",
         "browserify": "*",
-        "brace": "*",
         "browser-sync": "*",
         "virtual-dom": "*",
         "jquery": "*",
