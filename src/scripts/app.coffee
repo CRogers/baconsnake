@@ -69,7 +69,15 @@ snake = (width, height, keyPresses, ticks) ->
       snakePositions.concat(currentFoodPosition)
     .map (positions) -> grid(width, height, 2, 20, positions)
 
-  vdomBaconjsRenderder(document.body, selectedSquares)
+  snakeViewState = Bacon.combineTemplate
+    head: position
+    tail: snake
+    food: foodPosition
+
+  snakeGrid = snakeViewState.map (snakeData) -> grid(width, height, 2, 20, snakeData)
+
+  vdomBaconjsRenderder document.body, snakeGrid
+
 
 
 $ ->
