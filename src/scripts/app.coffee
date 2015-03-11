@@ -9,10 +9,7 @@ vdomBaconjsRenderder = require('./virtual-dom-renderer')
 
 {Keys} = inputs
 
-WIDTH = 10
-HEIGHT = 10
-
-snake = (keyPresses, ticks) ->
+snake = (width, height, keyPresses, ticks) ->
   property = (prop, submatcher) ->
     return (object) -> submatcher(object[prop])
 
@@ -54,11 +51,11 @@ snake = (keyPresses, ticks) ->
   directionFacingAtTick = directionFacing.sampledBy(ticks)
 
   position = directionFacingAtTick.scan new Vector(0, 0), (currentPosition, direction) ->
-    currentPosition.add(direction).modulo(new Vector(WIDTH, HEIGHT))
+    currentPosition.add(direction).modulo(new Vector(width, height))
 
   foodPosition = position.scan new Vector(5, 5), (currentFoodPosition, snakeHeadPosition) ->
     if currentFoodPosition.equals(snakeHeadPosition)
-      return Vector.randomIntVector(WIDTH, HEIGHT)
+      return Vector.randomIntVector(width, height)
     return currentFoodPosition
   .skipDuplicates()
 
@@ -70,10 +67,10 @@ snake = (keyPresses, ticks) ->
 
   selectedSquares = snake.combine foodPosition, (snakePositions, currentFoodPosition) ->
       snakePositions.concat(currentFoodPosition)
-    .map (positions) -> grid(WIDTH, HEIGHT, 2, 20, positions)
+    .map (positions) -> grid(width, height, 2, 20, positions)
 
   vdomBaconjsRenderder(document.body, selectedSquares)
 
 
 $ ->
-  snake(inputs.keyPresses(), Bacon.repeatedly(200, [null]))
+  snake(10, 10, inputs.keyPresses(), Bacon.repeatedly(200, [null]))
