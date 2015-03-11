@@ -8,15 +8,13 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
 
-  lefts = keyPresses.filter(equalTo(Keys.LEFT)).map(makeVector(-1, 0))
-  rights = keyPresses.filter(equalTo(Keys.RIGHT)).map(makeVector(1, 0))
+  lefts = keyPresses.filter(equalTo(Keys.LEFT)).map(makeVector(-1, 0)).log('l')
+  rights = keyPresses.filter(equalTo(Keys.RIGHT)).map(makeVector(1, 0)).log('r')
 
   movementDeltas = lefts.merge(rights)
 
   headPosition = movementDeltas.scan initialSnakeHeadPosition, (currentPosition, delta) ->
     return currentPosition.add(delta)
-
-  headPosition.log('head pos:')
 
   return headPosition
 

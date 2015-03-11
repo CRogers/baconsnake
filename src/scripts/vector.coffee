@@ -6,15 +6,13 @@ class Vector
   constructor: (@x, @y) ->
 
   add: (vector) ->
-    new Vector(@x + vector.x, @y + vector.y)
+    makeVector(@x + vector.x, @y + vector.y)
 
   modulo: (vector) ->
-    new Vector(correctModulo(@x, vector.x), correctModulo(@y, vector.y))
+    makeVector(correctModulo(@x, vector.x), correctModulo(@y, vector.y))
 
   @randomIntVector: (xmax, ymax) ->
-    new Vector(randomInt(xmax), randomInt(ymax))
-
-  @ZERO: new Vector(0, 0)
+    makeVector(randomInt(xmax), randomInt(ymax))
 
   equals: (vector) ->
     vector.x == @x and vector.y == @y
