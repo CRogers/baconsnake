@@ -24,24 +24,28 @@ turnClockwise = (direction) ->
     when Direction.DOWN  then Direction.LEFT
     when Direction.LEFT  then Direction.UP
 
+
 snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
 
-  lefts = keyPresses.filter(equalTo(Keys.LEFT)).map(-> turnAntiClockwise)
-  rights = keyPresses.filter(equalTo(Keys.RIGHT)).map(-> turnClockwise)
+  leftTurns = keyPresses.filter(equalTo(Keys.LEFT)).map(-> turnAntiClockwise)
+  rightTurns = keyPresses.filter(equalTo(Keys.RIGHT)).map(-> turnClockwise)
 
-  turns = lefts.merge(rights)
+  turns = leftTurns.merge(rightTurns)
 
   directionFacing = turns.scan Direction.DOWN, (currentDirection, turn) ->
     return turn(currentDirection)
 
-  directionFacingAtSpace = directionFacing.sampledBy(keyPresses.filter(equalTo(Keys.SPACE)))
+  spacebars = keyPresses.filter(equalTo(Keys.SPACE))
+
+  directionFacingAtSpace = directionFacing.sampledBy(spacebars)
 
   headPosition = directionFacingAtSpace.scan initialSnakeHeadPosition, (currentPosition, direction) ->
     return currentPosition.add(direction)
 
   return headPosition
+
 
 snake = (width, height, keyPresses) ->
   headPosition = snakeHeadPosition(Vector(3, 2), keyPresses)
