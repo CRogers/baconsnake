@@ -64,6 +64,7 @@ gulp.task 'browserify', ['coffee'], ->
     .pipe(browserified())
     .pipe(rename('baconsnake.js'))
     .pipe(gulp.dest('./build/scripts/'))
+    .pipe(browserSync.reload(stream: true))
 
 gulp.task 'clean', ->
   del(['build/*'])
@@ -71,7 +72,7 @@ gulp.task 'clean', ->
 gulp.task 'build', ['jade', 'sass', 'browserify']
 
 gulp.task 'watch', ->
-  gulp.watch(paths.coffee, ['test', 'browserify', browserSync.reload])
+  gulp.watch(paths.coffee, ['test', 'browserify'])
   gulp.watch(paths.sass, ['sass'])
   gulp.watch(paths.jade, ['jade', browserSync.reload])
   gulp.watch(paths.testCoffee, ['test'])
@@ -80,12 +81,7 @@ gulp.task 'serve', ['build', 'watch'], ->
   browserSync
     server: {baseDir: 'build'}
 
-gulp.task 'testCoffee', ->
-  gulp.src paths.testCoffee
-  .pipe(notifyPlumberCoffee())
-  .pipe(coffee())
-  .pipe(gulp.dest('./build/scripts/test/'))
-
 gulp.task 'test', ['coffee'], ->
   gulp.src(paths.testCoffee, {read: false})
+    .pipe(plumber())
     .pipe(mocha())
