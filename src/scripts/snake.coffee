@@ -26,7 +26,7 @@ turnClockwise = (direction) ->
     when Direction.LEFT  then Direction.UP
 
 
-snakeHeadPosition = (initialSnakeHeadPosition, width, height, keyPresses) ->
+snakeHeadPosition = (initialSnakeHeadPosition, width, height, keyPresses, forwardTick) ->
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
 
@@ -37,8 +37,6 @@ snakeHeadPosition = (initialSnakeHeadPosition, width, height, keyPresses) ->
 
   directionFacing = turns.scan Direction.DOWN, (currentDirection, turn) ->
     return turn(currentDirection)
-
-  forwardTick = keyPresses.filter(equalTo(Keys.UP))
 
   directionFacingOnForwardTick = directionFacing.sampledBy(forwardTick)
 
@@ -51,7 +49,8 @@ snakeHeadPosition = (initialSnakeHeadPosition, width, height, keyPresses) ->
 
 snake = (width, height, keyPresses) ->
   initialPosition = Vector(3, 2)
-  headPosition = snakeHeadPosition(initialPosition, width, height, keyPresses)
+  forwardTick = Bacon.repeatedly(250, [null])
+  headPosition = snakeHeadPosition(initialPosition, width, height, keyPresses, forwardTick)
 
   snakeTail = headPosition.slidingWindow(3)
 
