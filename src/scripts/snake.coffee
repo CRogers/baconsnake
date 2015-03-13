@@ -26,7 +26,7 @@ turnClockwise = (direction) ->
     when Direction.LEFT  then Direction.UP
 
 
-snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
+snakeHeadPosition = (initialSnakeHeadPosition, width, height, keyPresses) ->
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
 
@@ -44,18 +44,20 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
 
   headPosition =
     directionFacingOnForwardTick.scan initialSnakeHeadPosition, (currentPosition, direction) ->
-      return currentPosition.add(direction)
+      return currentPosition.add(direction).modulo(width, height)
 
   return headPosition
 
 
 snake = (width, height, keyPresses) ->
   initialPosition = Vector(3, 2)
-  headPosition = snakeHeadPosition(initialPosition, keyPresses)
+  headPosition = snakeHeadPosition(initialPosition, width, height, keyPresses)
+
+  snakeTail = headPosition.slidingWindow(3)
 
   staticSnake = Bacon.combineTemplate
     head: headPosition
-    tail: []
+    tail: snakeTail # List of vectors, can include head
     food: null
 
   return staticSnake

@@ -8,8 +8,8 @@ class Vector
   add: (vector) ->
     makeVector(@x + vector.x, @y + vector.y)
 
-  modulo: (vector) ->
-    makeVector(correctModulo(@x, vector.x), correctModulo(@y, vector.y))
+  modulo: (xmod, ymod) ->
+    makeVector(correctModulo(@x, xmod), correctModulo(@y, ymod))
 
   @randomIntVector: (xmax, ymax) ->
     makeVector(randomInt(xmax), randomInt(ymax))
