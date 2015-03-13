@@ -11,41 +11,20 @@ Vector = require('../vector')
 snakeHeadPositionAt00 = (keyPresses) ->
   snakeHeadPosition(Vector(0, 0), keyPresses)
 
+# These aren't very exciting tests as nothing really happens yet
 describe 'snake', ->
-  it 'should have head at (0, 1) after one tick', ->
+  it 'should have head at (0, 0) after one keypress', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.UP)
+      .whenGivenEvents(Keys.LEFT)
 
     expect(output).to.deep.equal [
-      Vector(0, 0),
-      Vector(0, 1)
+      Vector(0, 0)
     ]
 
-  it 'should have head at (0, 2) after two ticks', ->
+  it 'should have head at (0, 0) after two keypresses', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.UP, Keys.UP)
+      .whenGivenEvents(Keys.UP, Keys.RIGHT)
 
     expect(output).to.deep.equal [
-      Vector(0, 0),
-      Vector(0, 1),
-      Vector(0, 2)
-    ]
-
-  it 'should have head at (1, 0) after one left then tick', ->
-    output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.LEFT, Keys.UP)
-
-    expect(output).to.deep.equal [
-      Vector(0, 0),
-      Vector(1, 0)
-    ]
-
-  it 'should have head at (1, 1) after tick, left, tick', ->
-    output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.UP, Keys.LEFT, Keys.UP)
-
-    expect(output).to.deep.equal [
-      Vector(0, 0),
-      Vector(0, 1),
-      Vector(1, 1)
+      Vector(0, 0)
     ]
