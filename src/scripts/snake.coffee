@@ -62,11 +62,11 @@ snake = (width, height, keyPresses) ->
 
   snakeTail = headPosition.slidingWindowBy(timesFoodEaten)
 
-  staticSnake = Bacon.combineTemplate
+  snakeRenderData = Bacon.combineTemplate
     head: headPosition
     tail: snakeTail # List of vectors, can include head
-    food: foodPosition
+    food: foodPosition # Vector, possibly null
 
-  return staticSnake
+  return snakeRenderData
 
 module.exports = {snake, snakeHeadPosition}
