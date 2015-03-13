@@ -38,12 +38,13 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
   directionFacing = turns.scan Direction.DOWN, (currentDirection, turn) ->
     return turn(currentDirection)
 
-  spacebars = keyPresses.filter(equalTo(Keys.SPACE))
+  forwardTick = keyPresses.filter(equalTo(Keys.UP))
 
-  directionFacingOnSpace = directionFacing.sampledBy(spacebars)
+  directionFacingOnForwardTick = directionFacing.sampledBy(forwardTick)
 
-  headPosition = directionFacingOnSpace.scan initialSnakeHeadPosition, (currentPosition, direction) ->
-    return currentPosition.add(direction)
+  headPosition =
+    directionFacingOnForwardTick.scan initialSnakeHeadPosition, (currentPosition, direction) ->
+      return currentPosition.add(direction)
 
   return headPosition
 

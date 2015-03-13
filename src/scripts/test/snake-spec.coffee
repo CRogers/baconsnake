@@ -15,18 +15,18 @@ snakeHeadPositionAt00 = (keyPresses) ->
   snakeHeadPosition(Vector(0, 0), keyPresses)
 
 describe 'snake', ->
-  it 'should have head at (0, 1) after one space', ->
+  it 'should have head at (0, 1) after one tick', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.SPACE)
+      .whenGivenEvents(Keys.UP)
 
     expect(output).to.deep.equal [
       Vector(0, 0),
       Vector(0, 1)
     ]
 
-  it 'should have head at (0, 2) after two spaces', ->
+  it 'should have head at (0, 2) after two ticks', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.SPACE, Keys.SPACE)
+      .whenGivenEvents(Keys.UP, Keys.UP)
 
     expect(output).to.deep.equal [
       Vector(0, 0),
@@ -34,18 +34,18 @@ describe 'snake', ->
       Vector(0, 2)
     ]
 
-  it 'should have head at (1, 0) after one left then space', ->
+  it 'should have head at (1, 0) after one left then tick', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.LEFT, Keys.SPACE)
+      .whenGivenEvents(Keys.LEFT, Keys.UP)
 
     expect(output).to.deep.equal [
       Vector(0, 0),
       Vector(1, 0)
     ]
 
-  it 'should have head at (1, 1) after space, left, space', ->
+  it 'should have head at (1, 1) after tick, left, tick', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
-      .whenGivenEvents(Keys.SPACE, Keys.LEFT, Keys.SPACE)
+      .whenGivenEvents(Keys.UP, Keys.LEFT, Keys.UP)
 
     expect(output).to.deep.equal [
       Vector(0, 0),
