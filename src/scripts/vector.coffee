@@ -11,9 +11,6 @@ class Vector
   modulo: (xmod, ymod) ->
     makeVector(correctModulo(@x, xmod), correctModulo(@y, ymod))
 
-  @randomIntVector: (xmax, ymax) ->
-    makeVector(randomInt(xmax), randomInt(ymax))
-
   equals: (vector) ->
     vector.x == @x and vector.y == @y
 
@@ -27,5 +24,8 @@ makeVector = (x, y) ->
   if not vectors[key]?
     vectors[key] = new Vector(x, y)
   return vectors[key]
+
+makeVector.randomIntVector = (xmax, ymax) ->
+  makeVector(randomInt(xmax), randomInt(ymax))
 
 module.exports = makeVector

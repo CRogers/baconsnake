@@ -55,10 +55,15 @@ snake = (width, height, keyPresses) ->
 
   snakeTail = headPosition.slidingWindow(3)
 
+  foodPosition = headPosition.scan Vector(6, 4), (curPosition, headPosition) ->
+    if headPosition == curPosition
+      return Vector.randomIntVector(width, height)
+    return curPosition
+
   staticSnake = Bacon.combineTemplate
     head: headPosition
     tail: snakeTail # List of vectors, can include head
-    food: null
+    food: foodPosition
 
   return staticSnake
 
