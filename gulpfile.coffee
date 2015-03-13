@@ -17,8 +17,8 @@ browserified = ->
     browserify(filename).bundle()
 
 paths =
-  coffee: './src/scripts/*.coffee'
-  testCoffee: './src/scripts/test/*.coffee'
+  coffee: './src/scripts/{,test}/*.coffee'
+  testCoffee: './src/scripts/test/*-spec.coffee'
   sass: './src/css/*.sass'
   jade: './src/html/*.jade'
 
@@ -72,12 +72,18 @@ gulp.task 'clean', ->
 gulp.task 'build', ['jade', 'sass', 'browserify']
 
 gulp.task 'watch', ->
-  gulp.watch(paths.coffee, ['test', 'browserify'])
+  gulp.watch(paths.coffee, ['browserify', 'test'])
   gulp.watch(paths.sass, ['sass'])
   gulp.watch(paths.jade, ['jade', browserSync.reload])
-  gulp.watch(paths.testCoffee, ['test'])
+  #gulp.watch(paths.testCoffee, ['test'])
 
-gulp.task 'serve', ['build', 'watch'], ->
+copy = (src, dest) ->
+  gulp.src("#{src}/**/*").pipe(gulp.dest(dest))
+
+gulp.task 'copyMocha', ->
+  copy('node_modules/mocha', 'build/scripts/mocha')
+
+gulp.task 'serve', ['build', 'copyMocha', 'watch', 'test'], ->
   browserSync
     server: {baseDir: 'build'}
 

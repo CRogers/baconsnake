@@ -26,6 +26,7 @@ turnClockwise = (direction) ->
 
 
 snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
+
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
 
@@ -44,7 +45,7 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
   headPosition = directionFacingAtSpace.scan initialSnakeHeadPosition, (currentPosition, direction) ->
     return currentPosition.add(direction)
 
-  return headPosition
+  return headPosition.log()
 
 
 snake = (width, height, keyPresses) ->

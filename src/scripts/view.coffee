@@ -23,11 +23,13 @@ classForPosition = (snake, vec) ->
 
   return null
 
-grid = (width, height, gap, size, snake) -> h '.snake-game', do ->
+grid = (width, height, gap, size, snake) ->
   actualGap = gap + size
-  for y in [0...height]
-    for x in [0...width]
-      extraClass = classForPosition(snake, Vector(x, y))
-      square(x * actualGap, y * actualGap, size, extraClass)
+  pixelHeight = px(actualGap * height)
+  h '.snake-game', {style: {height: pixelHeight}}, do ->
+    for y in [0...height]
+      for x in [0...width]
+        extraClass = classForPosition(snake, Vector(x, y))
+        square(x * actualGap, y * actualGap, size, extraClass)
 
 module.exports = grid

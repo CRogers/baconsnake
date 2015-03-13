@@ -1,5 +1,6 @@
 Bacon = require('baconjs')
 $ = require('jquery')
+chai = require('chai')
 
 window?.Bacon = Bacon
 $.fn.asEventStream = Bacon.$.asEventStream
@@ -16,5 +17,7 @@ Bacon.Observable::slidingWindowBy = (lengthObs) ->
       sink(new Bacon.Next(buf))
 
     lengthObs.onValue (n) ->
-      console.log 'lobs changed', n
       length = n
+
+
+chai.config.truncateThreshold = 99999999

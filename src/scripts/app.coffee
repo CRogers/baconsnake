@@ -2,6 +2,8 @@ $ = require('jquery')
 _ = require('lodash')
 
 require('./libsetup')
+require('./test/snake-spec')
+
 inputs = require('./inputs')
 grid = require('./view')
 {snake} = require('./snake')
@@ -16,4 +18,4 @@ $ ->
   snakeRenderDataStream = snake(WIDTH, HEIGHT, inputs.keyPresses())
 
   snakeGrid = snakeRenderDataStream.map (snakeData) -> grid(WIDTH, HEIGHT, GAP, SIZE, snakeData)
-  vdomBaconjsRenderder document.body, snakeGrid
+  vdomBaconjsRenderder $('.game')[0], snakeGrid

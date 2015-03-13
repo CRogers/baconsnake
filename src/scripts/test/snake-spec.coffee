@@ -1,5 +1,4 @@
 expect = require('chai').expect
-sinon = require('sinon')
 
 _ = require('lodash')
 Bacon = require('baconjs')
