@@ -52,12 +52,15 @@ snake = (width, height, keyPresses) ->
   forwardTick = Bacon.repeatedly(250, [null])
   headPosition = snakeHeadPosition(initialPosition, width, height, keyPresses, forwardTick)
 
-  snakeTail = headPosition.slidingWindow(3)
-
   foodPosition = headPosition.scan Vector(6, 4), (curPosition, headPosition) ->
     if headPosition == curPosition
       return Vector.randomIntVector(width, height)
     return curPosition
+  .skipDuplicates()
+
+  timesFoodEaten = foodPosition.scan 2, (count) -> count + 1
+
+  snakeTail = headPosition.slidingWindowBy(timesFoodEaten)
 
   staticSnake = Bacon.combineTemplate
     head: headPosition
