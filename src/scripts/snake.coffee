@@ -4,6 +4,7 @@ Bacon = require('baconjs')
 Vector = require('./vector')
 {Keys} = require('./inputs')
 
+
 Direction =
   UP: new Vector(0, -1)
   RIGHT:  new Vector(1, 0)
@@ -26,7 +27,6 @@ turnClockwise = (direction) ->
 
 
 snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
-
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
 
@@ -40,16 +40,17 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
 
   spacebars = keyPresses.filter(equalTo(Keys.SPACE))
 
-  directionFacingAtSpace = directionFacing.sampledBy(spacebars)
+  directionFacingOnSpace = directionFacing.sampledBy(spacebars)
 
-  headPosition = directionFacingAtSpace.scan initialSnakeHeadPosition, (currentPosition, direction) ->
+  headPosition = directionFacingOnSpace.scan initialSnakeHeadPosition, (currentPosition, direction) ->
     return currentPosition.add(direction)
 
-  return headPosition.log()
+  return headPosition
 
 
 snake = (width, height, keyPresses) ->
-  headPosition = snakeHeadPosition(Vector(3, 2), keyPresses)
+  initialPosition = Vector(3, 2)
+  headPosition = snakeHeadPosition(initialPosition, keyPresses)
 
   staticSnake = Bacon.combineTemplate
     head: headPosition

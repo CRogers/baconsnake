@@ -42,3 +42,13 @@ describe 'snake', ->
       Vector(0, 0),
       Vector(1, 0)
     ]
+
+  it 'should have head at (1, 1) after space, left, space', ->
+    output = eventsProducedBy(snakeHeadPositionAt00)
+      .whenGivenEvents(Keys.SPACE, Keys.LEFT, Keys.SPACE)
+
+    expect(output).to.deep.equal [
+      Vector(0, 0),
+      Vector(0, 1),
+      Vector(1, 1)
+    ]
