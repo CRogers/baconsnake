@@ -4,9 +4,16 @@ Bacon = require('baconjs')
 Vector = require('./vector')
 {Keys} = require('./inputs')
 
-
 snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
-  return Bacon.constant(initialSnakeHeadPosition)
+  equalTo = (expected) ->
+    return (actual) -> actual == expected
+
+  rights = keyPresses.filter(equalTo(Keys.RIGHT))
+
+  headPosition = rights.scan initialSnakeHeadPosition, (headPosition, rightKeyPress) ->
+    return headPosition.add(Vector(1, 0))
+
+  return headPosition
 
 
 snake = (width, height, keyPresses) ->
