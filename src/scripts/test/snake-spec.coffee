@@ -12,7 +12,8 @@ snakeHeadPositionAt00 = (keyPresses) ->
   snakeHeadPosition(Vector(0, 0), keyPresses)
 
 # These aren't very exciting tests as nothing really happens yet
-describe 'snake', ->
+# Remove x from start of line to enable tests
+xdescribe 'snake', ->
   it 'should have head at (0, 0) after one keypress', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
       .whenGivenEvents(Keys.LEFT)
