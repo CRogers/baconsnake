@@ -17,7 +17,8 @@ snakeHeadPositionAt00 = (events) ->
     .onValue -> tickStream.push(null)
   return snakeHeadPosition(Vector(0, 0), 3, 3, events, tickStream)
 
-describe 'snake head position', ->
+# Remove x from start of line to enable tests
+xdescribe 'snake head position', ->
   it 'should have head at (0, 1) after one tick', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
       .whenGivenEvents(tick)
