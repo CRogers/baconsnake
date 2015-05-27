@@ -11,7 +11,8 @@ Vector = require('../vector')
 snakeHeadPositionAt00 = (keyPresses) ->
   snakeHeadPosition(Vector(0, 0), keyPresses)
 
-describe 'snake', ->
+# Remove x from start of line to enable tests
+xdescribe 'snake head position', ->
   it 'should have head at (0, 1) after one tick', ->
     output = eventsProducedBy(snakeHeadPositionAt00)
       .whenGivenEvents(Keys.UP)
