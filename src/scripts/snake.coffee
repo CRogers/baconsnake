@@ -64,8 +64,8 @@ snake = (width, height, keyPresses) ->
 
   snakeRenderData = Bacon.combineTemplate
     head: headPosition
-    tail: snakeTail # List of vectors, can include head
-    food: foodPosition # Vector, possibly null
+    tail: snakeTail # (Steam/property of) a list of vectors, can include head
+    food: foodPosition # (Stream/property of) a Vector, possibly null
 
   return snakeRenderData
 
