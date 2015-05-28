@@ -8,16 +8,16 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
   equalTo = (expected) ->
     return (actual) -> actual == expected
 
-  rights = keyPresses.filter(equalTo(Keys.RIGHT))
+  ups = keyPresses.filter(equalTo(Keys.UP))
 
-  headPosition = rights.scan initialSnakeHeadPosition, (headPosition, rightKeyPress) ->
-    return headPosition.add(Vector(1, 0))
+  headPosition = ups.scan initialSnakeHeadPosition, (headPosition, rightKeyPress) ->
+    return headPosition.add(Vector(0, -1))
 
   return headPosition
 
 
 snake = (width, height, keyPresses) ->
-  initialPosition = Vector(3, 2)
+  initialPosition = Vector(3, 5)
   headPosition = snakeHeadPosition(initialPosition, keyPresses)
 
   snakeRenderData = Bacon.combineTemplate
