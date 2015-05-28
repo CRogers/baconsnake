@@ -26,6 +26,7 @@ turnClockwise = (direction) ->
     when Direction.LEFT  then Direction.UP
 
 
+# Returns a stream or property of snake head positions
 snakeHeadPosition = (initialSnakeHeadPosition, width, height, keyPresses, forwardTick) ->
   equalTo = (expectedValue) ->
     return (value) -> value == expectedValue
@@ -63,7 +64,7 @@ snake = (width, height, keyPresses) ->
   snakeTail = headPosition.slidingWindowBy(timesFoodEaten)
 
   snakeRenderData = Bacon.combineTemplate
-    head: headPosition
+    head: headPosition # (Stream/property of) a vector
     tail: snakeTail # (Steam/property of) a list of vectors, can include head
     food: foodPosition # (Stream/property of) a Vector, possibly null
 
