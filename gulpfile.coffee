@@ -36,6 +36,10 @@ gulp.task 'coffee', ->
     .pipe(coffee())
     .pipe(gulp.dest('./build/scripts/'))
 
+gulp.task 'js', ->
+  gulp.src('./src/scripts/*.js')
+    .pipe(gulp.dest('./build/scripts/'))
+
 notifyPlumberSass = -> plumber
   errorHandler: (args) ->
     console.log arguments.length
@@ -58,7 +62,7 @@ gulp.task 'jade', ->
     .pipe(jade())
     .pipe(gulp.dest('./build/'))
 
-gulp.task 'browserify', ['coffee'], ->
+gulp.task 'browserify', ['coffee', 'js'], ->
   gulp.src('./build/scripts/app.js')
     .pipe(plumber())
     .pipe(browserified())
