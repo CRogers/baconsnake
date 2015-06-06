@@ -18,6 +18,7 @@ browserified = ->
 
 paths =
   coffee: './src/scripts/{,test}/*.coffee'
+  js: './src/scripts/*.js'
   testCoffee: './src/scripts/test/*-spec.coffee'
   sass: './src/css/*.sass'
   jade: './src/html/*.jade'
@@ -77,6 +78,7 @@ gulp.task 'build', ['jade', 'sass', 'browserify']
 
 gulp.task 'watch', ->
   gulp.watch(paths.coffee, ['browserify', 'test'])
+  gulp.watch(paths.js, ['browserify', 'test'])
   gulp.watch(paths.sass, ['sass'])
   gulp.watch(paths.jade, ['jade', browserSync.reload])
   #gulp.watch(paths.testCoffee, ['test'])
