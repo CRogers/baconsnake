@@ -4,18 +4,18 @@ Baconsnake!
 Make the classic game [Snake](http://en.wikipedia.org/wiki/Snake_(video_game)) using Functional Reactive Programming in
 coffeescript via [Bacon.js](https://github.com/baconjs/bacon.js/#baconjs).
 
-Setup
+Instructions
 ---
 
-1. Clone this git repo
-2. Make sure you have node and npm installed (if not, `brew install node`)
-3. At the repo root, run `npm install`.
+This is a two part exercise. There are checkpoint branches for each part:
 
-Dev Environment
----
+* Start: `part1`/`part1-js`
+* Midpoint: `part2`/`part2-js`
+* Final solution: `part3`
 
-To run the game, type `./gulp serve` at the root of the directory. The code and tests will be recompiled on the fly and your
-browser will autoreload when necessary. You can tweak these settings in `gulpfile.coffee`.
+The `partX` are coffeescript versions. The `partX-js` branches are javascript version. To start:
 
-The tests should run automatically after changes when running `./gulp serve`, however you can run them sepeartely using `./gulp
- test`.
+1. `git checkout part1` (or `part1-js` for the js version)
+2. Follow the setup instructions on the readme page for that branch
+3. Look at the goals section on the webpage after running `./gulp serve`. You can also checkout `part2` to see the behaviour you need to implement.
+4. Repeat for part2
