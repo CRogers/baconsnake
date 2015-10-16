@@ -11,7 +11,7 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
 
   ups = keyPresses.filter(equalTo(Keys.UP))
 
-  headPosition = ups.scan initialSnakeHeadPosition, (headPosition, rightKeyPress) ->
+  headPosition = ups.scan initialSnakeHeadPosition, (headPosition, upKeyPress) ->
     return headPosition.add(Vector(0, -1))
 
   return headPosition
