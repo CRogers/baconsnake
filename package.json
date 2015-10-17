@@ -18,7 +18,6 @@
         "gulp": "*",
         "gulp-coffee": "*",
         "gulp-mocha": "*",
-        "gulp-rename": "*",
         "gulp-plumber": "*",
         "gulp-notify": "*",
         "coffee-script": "*",
@@ -27,14 +26,16 @@
         "chai": "*",
         "sinon": "1.12.0",
         "gulp-jade": "*",
-        "gulp-sass": "*",
         "baconjs": "*",
-        "vinyl-transform": "*",
+        "vinyl-source-stream": "*",
         "browserify": "*",
         "browser-sync": "*",
         "virtual-dom": "*",
         "jquery": "*",
         "lodash": "*"
     },
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "scripts": {
+        "shrinkwrap": "npm shrinkwrap --dev && node ./tasks/shrinkwrap-remove-resolved.js"
+    }
 }

@@ -3,23 +3,17 @@ coffee = require('gulp-coffee')
 del = require('del')
 mocha = require('gulp-mocha')
 jade = require('gulp-jade')
-sass = require('gulp-sass')
-transform = require('vinyl-transform')
+source = require('vinyl-source-stream')
 browserify = require('browserify')
-rename = require('gulp-rename')
 plumber = require('gulp-plumber')
 notify = require('gulp-notify')
 browserSync = require('browser-sync')
 path = require('path')
 
-browserified = ->
-  transform (filename) ->
-    browserify(filename).bundle()
-
 paths =
   coffee: './src/scripts/{,test}/*.coffee'
   testCoffee: './src/scripts/test/*-spec.coffee'
-  sass: './src/css/*.sass'
+  css: './src/css/*.css'
   jade: './src/html/*.jade'
 
 notifyPlumberCoffee = -> plumber
@@ -36,19 +30,8 @@ gulp.task 'coffee', ->
     .pipe(coffee())
     .pipe(gulp.dest('./build/scripts/'))
 
-notifyPlumberSass = -> plumber
-  errorHandler: (args) ->
-    console.log arguments.length
-    args.fileName = path.basename(args.fileName)
-    notify.onError('''Error: <%= error.message %>
-                      at line <%= error.lineNumber %>
-                      in file: <%= error.fileName %>''')(args)
-    @emit('end')
-
-gulp.task 'sass', ->
-  gulp.src paths.sass
-    .pipe(notifyPlumberSass())
-    .pipe(sass(indentedSyntax: true))
+gulp.task 'css', ->
+  gulp.src paths.css
     .pipe(gulp.dest('./build/css/'))
     .pipe(browserSync.reload(stream: true))
 
@@ -58,22 +41,25 @@ gulp.task 'jade', ->
     .pipe(jade())
     .pipe(gulp.dest('./build/'))
 
+browserified = ->
+  transform (filename) ->
+    browserify(filename).bundle()
+
 gulp.task 'browserify', ['coffee'], ->
-  gulp.src('./build/scripts/app.js')
-    .pipe(plumber())
-    .pipe(browserified())
-    .pipe(rename('baconsnake.js'))
+  browserify('./build/scripts/app.js')
+    .bundle()
+    .pipe(source('baconsnake.js'))
     .pipe(gulp.dest('./build/scripts/'))
     .pipe(browserSync.reload(stream: true))
 
 gulp.task 'clean', ->
   del(['build/*'])
 
-gulp.task 'build', ['jade', 'sass', 'browserify']
+gulp.task 'build', ['jade', 'css', 'browserify']
 
 gulp.task 'watch', ->
   gulp.watch(paths.coffee, ['browserify', 'test'])
-  gulp.watch(paths.sass, ['sass'])
+  gulp.watch(paths.css, ['css'])
   gulp.watch(paths.jade, ['jade', browserSync.reload])
   #gulp.watch(paths.testCoffee, ['test'])
 

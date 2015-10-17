@@ -1,0 +1,41 @@
+body {
+  margin: 15px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 13px;
+}
+
+#tests {
+  /* Comment out the line below to enable tests */
+  display: none;
+}
+
+#mocha {
+  margin: 15px 0;
+}
+
+.snake-game {
+  position: relative;
+  margin-top: 10px;
+}
+
+.square {
+  position: absolute;
+  background: lightgray;
+}
+
+.square.head {
+  background: darkgreen;
+}
+
+.square.tail {
+  background: green;
+}
+
+.square.food {
+  background: red;
+  color: pink;
+  text-align: center;
+}
+.square.food:before {
+  content: "~"; /* Bacon */
+}
