@@ -12,6 +12,7 @@ path = require('path')
 
 paths =
   coffee: './src/scripts/{,test}/*.coffee'
+  js: './src/scripts/*.js'
   testCoffee: './src/scripts/test/*-spec.coffee'
   css: './src/css/*.css'
   jade: './src/html/*.jade'
@@ -30,6 +31,10 @@ gulp.task 'coffee', ->
     .pipe(coffee())
     .pipe(gulp.dest('./build/scripts/'))
 
+gulp.task 'js', ->
+  gulp.src('./src/scripts/*.js')
+  .pipe(gulp.dest('./build/scripts/'))
+
 gulp.task 'css', ->
   gulp.src paths.css
     .pipe(gulp.dest('./build/css/'))
@@ -45,7 +50,7 @@ browserified = ->
   transform (filename) ->
     browserify(filename).bundle()
 
-gulp.task 'browserify', ['coffee'], ->
+gulp.task 'browserify', ['coffee', 'js'], ->
   browserify('./build/scripts/app.js')
     .bundle()
     .pipe(source('baconsnake.js'))
@@ -59,6 +64,7 @@ gulp.task 'build', ['jade', 'css', 'browserify']
 
 gulp.task 'watch', ->
   gulp.watch(paths.coffee, ['browserify', 'test'])
+  gulp.watch(paths.js, ['browserify', 'test'])
   gulp.watch(paths.css, ['css'])
   gulp.watch(paths.jade, ['jade', browserSync.reload])
   #gulp.watch(paths.testCoffee, ['test'])
