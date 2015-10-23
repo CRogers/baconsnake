@@ -4,6 +4,8 @@ Baconsnake!
 Make the classic game [Snake](http://en.wikipedia.org/wiki/Snake_(video_game)) using Functional Reactive Programming in
 coffeescript via [Bacon.js](https://github.com/baconjs/bacon.js/#baconjs).
 
+![Baconsnake!](http://i.imgur.com/qURLMrN.gif)
+
 Instructions
 ---
 
