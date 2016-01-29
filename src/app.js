@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var _ = require('lodash');
 require('./libsetup.coffee');
+console.log(require('./hello.ts').default);
 
 var inputs = require('./inputs.coffee');
 var grid = require('./view.coffee');
