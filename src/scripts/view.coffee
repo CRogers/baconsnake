@@ -1,9 +1,9 @@
 h = require('virtual-dom/h')
-vdomBaconjsRenderder = require('./virtual-dom-renderer')
 Bacon = require('baconjs')
 _ = require('lodash')
 
-Vector = require('./vector')
+vdomBaconjsRenderder = require('./virtual-dom-renderer.coffee')
+Vector = require('./vector.coffee')
 
 px = (num) -> "#{num}px"
 

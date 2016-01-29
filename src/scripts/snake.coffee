@@ -1,8 +1,8 @@
 _ = require('lodash')
 Bacon = require('baconjs')
 
-Vector = require('./vector')
-{Keys} = require('./inputs')
+Vector = require('./vector.coffee')
+{Keys} = require('./inputs.coffee')
 
 # Returns a stream or property of snake head positions
 snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
