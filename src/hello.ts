@@ -1,5 +1,5 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import * as _ from 'lodash'
+import { Keys } from './inputs.ts'
 
-export default _.keys({a: 4});
+export default Keys;

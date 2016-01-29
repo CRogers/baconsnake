@@ -7,6 +7,21 @@
   "installed": {
     "lodash/lodash.d.ts": {
       "commit": "5d0f2126c8dac8fce0ff020218aea06607213b0d"
+    },
+    "es6-promise/es6-promise.d.ts": {
+      "commit": "5d0f2126c8dac8fce0ff020218aea06607213b0d"
+    },
+    "node/node-0.11.d.ts": {
+      "commit": "5d0f2126c8dac8fce0ff020218aea06607213b0d"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "5d0f2126c8dac8fce0ff020218aea06607213b0d"
+    },
+    "baconjs/baconjs.d.ts": {
+      "commit": "5d0f2126c8dac8fce0ff020218aea06607213b0d"
+    },
+    "virtual-dom/virtual-dom.d.ts": {
+      "commit": "5d0f2126c8dac8fce0ff020218aea06607213b0d"
     }
   }
 }
