@@ -13,7 +13,6 @@ path = require('path')
 paths =
   coffee: './src/scripts/{,test}/*.coffee'
   js: './src/scripts/*.js'
-  testCoffee: './src/scripts/test/*-spec.coffee'
   css: './src/css/*.css'
   jade: './src/html/*.jade'
 
@@ -63,11 +62,10 @@ gulp.task 'clean', ->
 gulp.task 'build', ['jade', 'css', 'browserify']
 
 gulp.task 'watch', ->
-  gulp.watch(paths.coffee, ['browserify', 'test'])
-  gulp.watch(paths.js, ['browserify', 'test'])
+  gulp.watch(paths.coffee, ['browserify'])
+  gulp.watch(paths.js, ['browserify'])
   gulp.watch(paths.css, ['css'])
   gulp.watch(paths.jade, ['jade', browserSync.reload])
-  #gulp.watch(paths.testCoffee, ['test'])
 
 copy = (src, dest) ->
   gulp.src("#{src}/**/*").pipe(gulp.dest(dest))
@@ -75,11 +73,6 @@ copy = (src, dest) ->
 gulp.task 'copyMocha', ->
   copy('node_modules/mocha', 'build/scripts/mocha')
 
-gulp.task 'serve', ['build', 'copyMocha', 'watch', 'test'], ->
+gulp.task 'serve', ['build', 'copyMocha', 'watch'], ->
   browserSync
     server: {baseDir: 'build'}
-
-gulp.task 'test', ['coffee'], ->
-  gulp.src(paths.testCoffee, {read: false})
-    .pipe(plumber())
-    .pipe(mocha())

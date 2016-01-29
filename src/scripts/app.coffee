@@ -2,7 +2,6 @@ $ = require('jquery')
 _ = require('lodash')
 
 require('./libsetup')
-require('./test/snake-spec')
 
 inputs = require('./inputs')
 grid = require('./view')

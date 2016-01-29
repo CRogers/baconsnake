@@ -2,11 +2,7 @@ doctype html
 html
   head
     title Baconsnake!
-    link(rel="stylesheet" href='scripts/mocha/mocha.css')
     link(rel='stylesheet', href='css/styles.css')
-    script(src='scripts/mocha/mocha.js')
-    script(type='text/javascript').
-      mocha.setup('bdd');
     script(src='scripts/baconsnake.js')
   body
     a(href='https://github.com/baconjs/bacon.js/#baconjs') Bacon.js docs
@@ -15,8 +11,3 @@ html
       ul
         li Left/Right should turn the snake on the spot
         li Up should advance the snake forwards
-    #tests
-      #mocha
-      script(type='text/javascript').
-        mocha.run();
-      p Protip: tests also run in your console with better error output
