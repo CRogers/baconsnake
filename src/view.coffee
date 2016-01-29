@@ -2,7 +2,7 @@ h = require('virtual-dom/h')
 Bacon = require('baconjs')
 _ = require('lodash')
 
-vdomBaconjsRenderder = require('./virtual-dom-renderer.coffee')
+vdomBaconjsRenderder = require('./virtual-dom-renderer.ts').default
 Vector = require('./vector.coffee')
 
 px = (num) -> "#{num}px"
