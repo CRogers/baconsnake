@@ -1,7 +1,7 @@
 _ = require('lodash')
 Bacon = require('baconjs')
 
-Vector = require('./vector.coffee')
+Vector = require('./vector.ts').default
 {Keys} = require('./inputs.ts')
 
 # Returns a stream or property of snake head positions
@@ -12,13 +12,13 @@ snakeHeadPosition = (initialSnakeHeadPosition, keyPresses) ->
   ups = keyPresses.filter(equalTo(Keys.UP))
 
   headPosition = ups.scan initialSnakeHeadPosition, (headPosition, upKeyPress) ->
-    return headPosition.add(Vector(0, -1))
+    return headPosition.add(Vector.of(0, -1))
 
   return headPosition
 
 
 snake = (width, height, keyPresses) ->
-  initialPosition = Vector(3, 5)
+  initialPosition = Vector.of(3, 5)
   headPosition = snakeHeadPosition(initialPosition, keyPresses)
 
   snakeRenderData = Bacon.combineTemplate
