@@ -10,7 +10,7 @@ function randomInt(max: number): number {
 
 let vectors = {};
 
-export default class Vector {
+export class Vector {
     constructor(private x: number, private y: number) {}
 
     // memoize so you can just use javascripts === for equality

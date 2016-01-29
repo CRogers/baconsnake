@@ -4,7 +4,7 @@ require('./libsetup.coffee');
 console.log(require('./hello.ts').default);
 
 var inputs = require('./inputs.ts');
-var grid = require('./view.coffee');
+var grid = require('./view.ts').grid;
 var snake = require('./snake.coffee').snake;
 var vdomBaconjsRenderder = require('./virtual-dom-renderer.ts').default;
 
