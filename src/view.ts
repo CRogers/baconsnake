@@ -3,10 +3,9 @@
 import { h } from 'virtual-dom'
 import * as _ from 'lodash'
 
-import * as vdomBaconjsRenderder from './virtual-dom-renderer.ts'
 import { Vector } from './vector.ts'
 
-function px(num) { return "#{num}px" }
+function px(num) { return `${num}px` }
 
 function square(x: number, y: number, size: number, extraClass?: string) {
     let className = 'square ' + (extraClass ? extraClass : '');
@@ -30,7 +29,7 @@ function classForPosition(snake, vec): string {
     return null;
 }
 
-export function grid(width: number, height: number, gap: number, size: number, snake: any) {
+export function grid(width: number, height: number, gap: number, size: number, snake: any): VirtualDOM.VTree {
     let actualGap = gap + size;
     let pixelHeight = px(actualGap * height);
     let squares = [];
@@ -40,6 +39,6 @@ export function grid(width: number, height: number, gap: number, size: number, s
             squares.push(square(x * actualGap, y * actualGap, size, extraClass));
         }
     }
-    h('.snake-game', {style: {height: pixelHeight}}, squares);
+    return h('.snake-game', {style: {height: pixelHeight}}, squares);
 
 }

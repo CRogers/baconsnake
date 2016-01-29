@@ -2,9 +2,9 @@
 
 import { h, diff, patch, create } from 'virtual-dom'
 
-export default function vdomBaconjsRenderder(
+export default function vdomBaconjsRenderer(
     parentElement: Element,
-    vtreeStream: Bacon.EventStream<any, VirtualDOM.VNode>) {
+    vtreeStream: Bacon.EventStream<any, VirtualDOM.VTree>) {
 
   let domNode = vtreeStream
       .take(1)

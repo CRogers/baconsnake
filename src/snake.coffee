@@ -1,7 +1,7 @@
 _ = require('lodash')
 Bacon = require('baconjs')
 
-Vector = require('./vector.ts').default
+Vector = require('./vector.ts').Vector
 {Keys} = require('./inputs.ts')
 
 # Returns a stream or property of snake head positions

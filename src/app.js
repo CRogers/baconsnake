@@ -6,7 +6,7 @@ console.log(require('./hello.ts').default);
 var inputs = require('./inputs.ts');
 var grid = require('./view.ts').grid;
 var snake = require('./snake.coffee').snake;
-var vdomBaconjsRenderder = require('./virtual-dom-renderer.ts').default;
+var vdomBaconjsRenderer = require('./virtual-dom-renderer.ts').default;
 
 var WIDTH = 10;
 var HEIGHT = 10;
@@ -19,5 +19,5 @@ $(function() {
   snakeGrid = snakeRenderDataStream.map(function(snakeData) {
     return grid(WIDTH, HEIGHT, GAP, SIZE, snakeData);
   });
-  return vdomBaconjsRenderder($('.game')[0], snakeGrid);
+  return vdomBaconjsRenderer($('.game')[0], snakeGrid);
 });
