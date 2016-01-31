@@ -1,6 +1,6 @@
 var $ = require('jquery');
 var _ = require('lodash');
-require('./libsetup.coffee');
+require('./libsetup.ts');
 console.log(require('./hello.ts').default);
 
 var inputs = require('./inputs.ts');
