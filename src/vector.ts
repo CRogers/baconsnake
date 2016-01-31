@@ -1,5 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
+import {Direction} from "./direction.ts";
 function correctModulo(a: number, m: number): number {
   return ((a % m) + m) % m
 }
@@ -11,7 +12,7 @@ function randomInt(max: number): number {
 let vectors = {};
 
 export class Vector {
-    constructor(private x: number, private y: number) {}
+    constructor(public x: number, public y: number) {}
 
     // memoize so you can just use javascripts === for equality
     public static of(x: number, y: number): Vector {
@@ -28,6 +29,10 @@ export class Vector {
 
     add(vector: Vector): Vector {
         return Vector.of(this.x + vector.x, this.y + vector.y)
+    }
+
+    advance(direction: Direction) {
+        return this.add(direction.asVector());
     }
 
     modulo(xmod: number, ymod: number): Vector {
