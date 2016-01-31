@@ -1,7 +1,6 @@
 var $ = require('jquery');
 var _ = require('lodash');
 require('./libsetup.ts');
-console.log(require('./hello.ts').default);
 
 var inputs = require('./inputs.ts');
 var grid = require('./view.ts').grid;
