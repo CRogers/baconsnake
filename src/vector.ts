@@ -34,7 +34,7 @@ export class Vector {
         return Vector.of(correctModulo(this.x, xmod), correctModulo(this.y, ymod))
     }
 
-    equals(vector): boolean {
+    equals(vector: Vector): boolean {
         return vector.x == this.x && vector.y == this.y
     }
 
