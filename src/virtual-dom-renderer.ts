@@ -1,10 +1,11 @@
 /// <reference path="../typings/tsd.d.ts" />
 
 import { h, diff, patch, create } from 'virtual-dom'
+import { Stream } from './bacon-extras.ts'
 
-export default function vdomBaconjsRenderer(
+export function vdomBaconjsRenderer(
     parentElement: Element,
-    vtreeStream: Bacon.EventStream<any, VirtualDOM.VTree>) {
+    vtreeStream: Stream<VirtualDOM.VTree>) {
 
   let domNode = vtreeStream
       .take(1)

@@ -1,5 +1,5 @@
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/app.ts',
   output: {
     path: __dirname + '/build',
     filename: 'snake.js'
