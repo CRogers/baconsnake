@@ -26,11 +26,19 @@ export class Direction {
     }
 
     turnRight(): Direction {
-        return Direction.fromComponents(this.direction.y, -this.direction.x);
+        return Direction.fromComponents(-this.direction.y, this.direction.x);
     }
 
     turnLeft(): Direction {
-        return Direction.fromComponents(-this.direction.y, this.direction.x);
+        return Direction.fromComponents(this.direction.y, -this.direction.x);
+    }
+
+    public static turnRight(direction: Direction): Direction {
+        return direction.turnRight()
+    }
+
+    public static turnLeft(direction: Direction): Direction {
+        return direction.turnLeft()
     }
 
     asVector(): Position{

@@ -13,17 +13,33 @@ function equalTo<T>(expected: T) {
     return (actual: T) => actual === expected
 }
 
+type Turn = (direction: Direction) => Direction;
+
 function snakeHeadPosition(
     initialHeadPosition: Position,
     keyPresses: Stream<Keys>): Property<Position> {
 
-    const ups: Stream<Keys> = keyPresses.filter(equalTo(Keys.UP));
+    const leftTurns: Stream<Turn> = keyPresses
+        .filter(equalTo(Keys.LEFT))
+        .map(() => Direction.turnLeft);
 
-    const headPostion: Property<Position> = ups.scan(initialHeadPosition, (lastHeadPosition, upKeyPress) => {
-        return lastHeadPosition.advance(Direction.up())
+    const rightTurns: Stream<Turn> = keyPresses
+        .filter(equalTo(Keys.RIGHT))
+        .map(() => Direction.turnRight);
+
+    const turns: Stream<Turn> = leftTurns.merge(rightTurns);
+
+    const direction: Property<Direction> = turns.scan(Direction.up(), (lastDirection, turn) => {
+        return turn(lastDirection);
     });
 
-    return headPostion;
+    const ups: Stream<any> = keyPresses.filter(equalTo(Keys.UP));
+
+    const directionFacingOnUpPress: Stream<Direction> = direction.sampledBy(ups);
+
+    return directionFacingOnUpPress.scan(initialHeadPosition, (lastHeadPosition, directionFacing) => {
+        return lastHeadPosition.advance(directionFacing)
+    });
 }
 
 export function snake(width: number, height: number, keyPresses: Stream<Keys>): Property<Snake> {
