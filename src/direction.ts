@@ -2,6 +2,8 @@
 
 import { Position } from './position.ts'
 
+export type Turn = (direction: Direction) => Direction;
+
 export class Direction {
     constructor(private direction: Position) {}
 
@@ -33,13 +35,11 @@ export class Direction {
         return Direction.fromComponents(this.direction.y, -this.direction.x);
     }
 
-    public static turnRight(direction: Direction): Direction {
-        return direction.turnRight()
-    }
+    public static turnRight: Turn = (direction: Direction) =>
+        direction.turnRight();
 
-    public static turnLeft(direction: Direction): Direction {
-        return direction.turnLeft()
-    }
+    public static turnLeft: Turn = (direction: Direction) =>
+        direction.turnLeft();
 
     asVector(): Position{
         return this.direction;
