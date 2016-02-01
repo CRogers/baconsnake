@@ -1,16 +1,16 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import { Vector } from './vector.ts'
+import { Position } from './vector.ts'
 
 export class Direction {
-    constructor(private direction: Vector) {}
+    constructor(private direction: Position) {}
 
     public static up(): Direction {
-        return new Direction(Vector.of(0, -1))
+        return new Direction(Position.of(0, -1))
     }
 
     public static fromComponents(x: number, y: number): Direction {
-        return new Direction(Vector.of(x, y));
+        return new Direction(Position.of(x, y));
     }
 
     turnRight(): Direction {
@@ -21,7 +21,7 @@ export class Direction {
         return Direction.fromComponents(-this.direction.y, this.direction.x);
     }
 
-    asVector(): Vector{
+    asVector(): Position{
         return this.direction;
     }
 }

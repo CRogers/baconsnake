@@ -11,35 +11,35 @@ function randomInt(max: number): number {
 
 let vectors = {};
 
-export class Vector {
+export class Position {
     constructor(public x: number, public y: number) {}
 
     // memoize so you can just use javascripts === for equality
-    public static of(x: number, y: number): Vector {
+    public static of(x: number, y: number): Position {
         let key = `${x}:${y}`;
         if (vectors[key] == null) {
-            vectors[key] = new Vector(x, y)
+            vectors[key] = new Position(x, y)
         }
         return vectors[key]
     }
 
-    public static randomIntVector(xmax: number, ymax: number): Vector {
-        return Vector.of(randomInt(xmax), randomInt(ymax));
+    public static randomIntVector(xmax: number, ymax: number): Position {
+        return Position.of(randomInt(xmax), randomInt(ymax));
     }
 
-    add(vector: Vector): Vector {
-        return Vector.of(this.x + vector.x, this.y + vector.y)
+    add(vector: Position): Position {
+        return Position.of(this.x + vector.x, this.y + vector.y)
     }
 
     advance(direction: Direction) {
         return this.add(direction.asVector());
     }
 
-    modulo(xmod: number, ymod: number): Vector {
-        return Vector.of(correctModulo(this.x, xmod), correctModulo(this.y, ymod))
+    modulo(xmod: number, ymod: number): Position {
+        return Position.of(correctModulo(this.x, xmod), correctModulo(this.y, ymod))
     }
 
-    equals(vector: Vector): boolean {
+    equals(vector: Position): boolean {
         return vector.x == this.x && vector.y == this.y
     }
 
