@@ -5,15 +5,13 @@ import * as Bacon from 'baconjs'
 
 import { Stream, Property } from './bacon-extras.ts'
 import { Position } from './position.ts'
-import { Direction } from './direction.ts'
+import { Direction, Turn } from './direction.ts'
 import { Keys } from './inputs.ts'
 import { Snake } from './types.ts'
 
 function equalTo<T>(expected: T) {
     return (actual: T) => actual === expected
 }
-
-type Turn = (direction: Direction) => Direction;
 
 function snakeHeadPosition(
     initialHeadPosition: Position,
@@ -33,9 +31,9 @@ function snakeHeadPosition(
         return turn(lastDirection);
     });
 
-    const ups: Stream<any> = keyPresses.filter(equalTo(Keys.UP));
+    const forwardTick: Stream<any> = keyPresses.filter(equalTo(Keys.UP));
 
-    const directionFacingOnUpPress: Stream<Direction> = direction.sampledBy(ups);
+    const directionFacingOnUpPress: Stream<Direction> = direction.sampledBy(forwardTick);
 
     return directionFacingOnUpPress.scan(initialHeadPosition, (lastHeadPosition, directionFacing) => {
         return lastHeadPosition.advance(directionFacing)
