@@ -10,7 +10,7 @@ import { Keys } from './inputs.ts'
 import { Snake } from './types.ts'
 
 function equalTo<T>(expected: T) {
-    return (actual: T) => actual == expected
+    return (actual: T) => actual === expected
 }
 
 function snakeHeadPosition(
