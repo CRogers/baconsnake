@@ -1,3 +1,12 @@
 #!/bin/sh
 
-./node_modules/webpack/bin/webpack.js $@
+function open_webpage() {
+    sleep 5
+    open http://localhost:8080/webpack-dev-server/static
+}
+
+function start_webpack_dev_server() {
+    ./node_modules/webpack-dev-server/bin/webpack-dev-server.js
+}
+
+open_webpage & start_webpack_dev_server && fg
