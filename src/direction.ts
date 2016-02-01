@@ -6,7 +6,19 @@ export class Direction {
     constructor(private direction: Position) {}
 
     public static up(): Direction {
-        return new Direction(Position.of(0, -1))
+        return Direction.fromComponents(0, -1)
+    }
+
+    public static down(): Direction {
+        return Direction.fromComponents(0, 1)
+    }
+
+    public static left(): Direction {
+        return Direction.fromComponents(0, -1)
+    }
+
+    public static right(): Direction {
+        return Direction.fromComponents(-1, 0)
     }
 
     public static fromComponents(x: number, y: number): Direction {

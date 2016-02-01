@@ -4,6 +4,7 @@ import { h } from 'virtual-dom'
 import * as _ from 'lodash'
 
 import { Position } from './position.ts'
+import { Snake } from './types.ts'
 
 function px(num) { return `${num}px` }
 
@@ -29,7 +30,7 @@ function classForPosition(snake, vec): string {
     return null;
 }
 
-export function grid(width: number, height: number, gap: number, size: number, snake: any): VirtualDOM.VTree {
+export function grid(width: number, height: number, gap: number, size: number, snake: Snake): VirtualDOM.VTree {
     let actualGap = gap + size;
     let pixelHeight = px(actualGap * height);
     let squares = [];

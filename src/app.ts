@@ -15,7 +15,7 @@ const GAP = 2;
 const SIZE = 20;
 
 $(() => {
-    const snakeRenderDataStream = snake(WIDTH, HEIGHT, keyPresses())
+    const snakeRenderDataStream = snake(WIDTH, HEIGHT, keyPresses());
     const snakeGrid = snakeRenderDataStream.map(snakeData => {
         return grid(WIDTH, HEIGHT, GAP, SIZE, snakeData);
     });
