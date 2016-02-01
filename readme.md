@@ -14,8 +14,5 @@ Setup
 Dev Environment
 ---
 
-To run the game, type `./gulp serve` at the root of the directory. The code and tests will be recompiled on the fly and your
-browser will autoreload when necessary. You can tweak these settings in `gulpfile.coffee`.
-
-The tests should run automatically after changes when running `./gulp serve`, however you can run them sepeartely using `./gulp
- test`.
+To run the game, type `./webpack` at the root of the directory. The code and tests will be recompiled on the fly and your
+browser will autoreload when necessary.
