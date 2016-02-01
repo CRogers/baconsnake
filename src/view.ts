@@ -3,7 +3,7 @@
 import { h } from 'virtual-dom'
 import * as _ from 'lodash'
 
-import { Position } from './vector.ts'
+import { Position } from './position.ts'
 
 function px(num) { return `${num}px` }
 

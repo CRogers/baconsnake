@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import { Position } from './vector.ts'
+import { Position } from './position.ts'
 
 export class Direction {
     constructor(private direction: Position) {}

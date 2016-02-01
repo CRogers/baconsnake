@@ -4,7 +4,7 @@ import * as _ from 'lodash'
 import * as Bacon from 'baconjs'
 
 import { Stream, Property } from './bacon-extras.ts'
-import { Position } from './vector.ts'
+import { Position } from './position.ts'
 import { Direction } from './direction.ts'
 import { Keys } from './inputs.ts'
 
