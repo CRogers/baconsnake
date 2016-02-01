@@ -22,7 +22,7 @@ export class Direction {
     }
 
     public static fromComponents(x: number, y: number): Direction {
-        return new Direction(Position.of(x, y));
+        return new Direction(Position.at(x, y));
     }
 
     turnRight(): Direction {

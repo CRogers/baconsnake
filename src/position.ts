@@ -15,7 +15,7 @@ export class Position {
     constructor(public x: number, public y: number) {}
 
     // memoize so you can just use javascripts === for equality
-    public static of(x: number, y: number): Position {
+    public static at(x: number, y: number): Position {
         let key = `${x}:${y}`;
         if (vectors[key] == null) {
             vectors[key] = new Position(x, y)
@@ -24,11 +24,11 @@ export class Position {
     }
 
     public static randomIntVector(xmax: number, ymax: number): Position {
-        return Position.of(randomInt(xmax), randomInt(ymax));
+        return Position.at(randomInt(xmax), randomInt(ymax));
     }
 
     add(vector: Position): Position {
-        return Position.of(this.x + vector.x, this.y + vector.y)
+        return Position.at(this.x + vector.x, this.y + vector.y)
     }
 
     advance(direction: Direction) {
@@ -36,7 +36,7 @@ export class Position {
     }
 
     modulo(xmod: number, ymod: number): Position {
-        return Position.of(correctModulo(this.x, xmod), correctModulo(this.y, ymod))
+        return Position.at(correctModulo(this.x, xmod), correctModulo(this.y, ymod))
     }
 
     equals(vector: Position): boolean {

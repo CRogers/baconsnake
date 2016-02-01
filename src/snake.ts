@@ -27,7 +27,7 @@ function snakeHeadPosition(
 }
 
 export function snake(width: number, height: number, keyPresses: Stream<Keys>): Property<Snake> {
-    const initialPosition = Position.of(3, 5);
+    const initialPosition = Position.at(3, 5);
     const headPosition = snakeHeadPosition(initialPosition, keyPresses);
     const snakeRenderData = Bacon.combineTemplate({
         head: headPosition,

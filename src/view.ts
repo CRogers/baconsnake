@@ -36,7 +36,7 @@ export function grid(width: number, height: number, gap: number, size: number, s
     let squares = [];
     for(let y = 0; y < height; y++) {
         for (let x = 0; x < width; x++) {
-            let extraClass = classForPosition(snake, Position.of(x, y));
+            let extraClass = classForPosition(snake, Position.at(x, y));
             squares.push(square(x * actualGap, y * actualGap, size, extraClass));
         }
     }
