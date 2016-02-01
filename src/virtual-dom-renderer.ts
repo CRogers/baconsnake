@@ -1,16 +1,15 @@
 /// <reference path="../typings/tsd.d.ts" />
 
 import { h, diff, patch, create } from 'virtual-dom'
-import { Stream } from './bacon-extras.ts'
+import { Property, Stream, Observable } from './bacon-extras.ts'
 
 export function vdomBaconjsRenderer(
     parentElement: Element,
-    vtreeStream: Stream<VirtualDOM.VTree>) {
+    vtreeStream: Property<VirtualDOM.VTree>) {
 
   let domNode = vtreeStream
       .take(1)
-      .map(create)
-      .toProperty();
+      .map(create);
 
   domNode.onValue(rootNode =>
           parentElement.appendChild(rootNode)

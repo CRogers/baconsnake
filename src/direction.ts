@@ -6,7 +6,7 @@ export class Direction {
     constructor(private direction: Vector) {}
 
     public static up(): Direction {
-        return new Direction(Vector.of(0, 1))
+        return new Direction(Vector.of(0, -1))
     }
 
     public static fromComponents(x: number, y: number): Direction {

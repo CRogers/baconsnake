@@ -5,12 +5,12 @@ import * as Bacon from 'baconjs'
 function doNothing() {}
 
 export type Stream<A> = Bacon.EventStream<any, A>;
-export type Property<A> = Bacon.EventStream<any, A>;
+export type Property<A> = Bacon.Property<any, A>;
 export type Observable<A> = Bacon.Observable<any, A>;
 
 export function slidingWindowBy<T>(
     observable: Observable<T>,
-    lengthObs: Observable<number>): Stream<T> {
+    lengthObs: Stream<number>): Stream<T> {
 
     return Bacon.fromBinder(sink => {
         let buf: T[] = [];
