@@ -23,7 +23,7 @@ export class Position {
         return vectors[key]
     }
 
-    public static randomIntVector(xmax: number, ymax: number): Position {
+    public static randomlyInArea(xmax: number, ymax: number): Position {
         return Position.at(randomInt(xmax), randomInt(ymax));
     }
 

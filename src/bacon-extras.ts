@@ -10,7 +10,7 @@ export type Observable<A> = Bacon.Observable<any, A>;
 
 export function slidingWindowBy<T>(
     observable: Observable<T>,
-    lengthObs: Stream<number>): Stream<T> {
+    lengthObs: Observable<number>): Stream<T> {
 
     return Bacon.fromBinder(sink => {
         let buf: T[] = [];
