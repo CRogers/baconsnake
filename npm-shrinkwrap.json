@@ -56,6 +56,10 @@
       "version": "0.0.1",
       "from": "array-filter@>=0.0.0 <0.1.0"
     },
+    "array-flatten": {
+      "version": "1.1.1",
+      "from": "array-flatten@1.1.1"
+    },
     "array-map": {
       "version": "0.0.0",
       "from": "array-map@>=0.0.0 <0.1.0"
@@ -296,6 +300,10 @@
       "version": "1.0.0",
       "from": "builtin-status-codes@>=1.0.0 <2.0.0"
     },
+    "bytes": {
+      "version": "2.2.0",
+      "from": "bytes@2.2.0"
+    },
     "callsite": {
       "version": "1.0.0",
       "from": "callsite@1.0.0"
@@ -390,6 +398,24 @@
       "version": "0.0.3",
       "from": "component-inherit@0.0.3"
     },
+    "compressible": {
+      "version": "2.0.7",
+      "from": "compressible@>=2.0.7 <2.1.0"
+    },
+    "compression": {
+      "version": "1.6.1",
+      "from": "compression@>=1.5.2 <2.0.0",
+      "dependencies": {
+        "accepts": {
+          "version": "1.3.1",
+          "from": "accepts@>=1.3.1 <1.4.0"
+        },
+        "negotiator": {
+          "version": "0.6.0",
+          "from": "negotiator@0.6.0"
+        }
+      }
+    },
     "concat-map": {
       "version": "0.0.1",
       "from": "concat-map@0.0.1"
@@ -414,9 +440,25 @@
       "version": "1.0.0",
       "from": "constants-browserify@>=1.0.0 <1.1.0"
     },
+    "content-disposition": {
+      "version": "0.5.1",
+      "from": "content-disposition@0.5.1"
+    },
+    "content-type": {
+      "version": "1.0.1",
+      "from": "content-type@>=1.0.1 <1.1.0"
+    },
     "convert-source-map": {
       "version": "1.1.3",
       "from": "convert-source-map@>=1.1.0 <1.2.0"
+    },
+    "cookie": {
+      "version": "0.1.5",
+      "from": "cookie@0.1.5"
+    },
+    "cookie-signature": {
+      "version": "1.0.6",
+      "from": "cookie-signature@1.0.6"
     },
     "core-util-is": {
       "version": "1.0.2",
@@ -630,6 +672,10 @@
       "version": "1.1.0",
       "from": "events@>=1.1.0 <1.2.0"
     },
+    "eventsource": {
+      "version": "0.1.6",
+      "from": "eventsource@>=0.1.3 <0.2.0"
+    },
     "evp_bytestokey": {
       "version": "1.0.0",
       "from": "evp_bytestokey@>=1.0.0 <2.0.0"
@@ -659,6 +705,10 @@
     "extglob": {
       "version": "0.3.2",
       "from": "extglob@>=0.3.1 <0.4.0"
+    },
+    "faye-websocket": {
+      "version": "0.9.4",
+      "from": "faye-websocket@>=0.9.3 <0.10.0"
     },
     "filename-regex": {
       "version": "2.0.0",
@@ -691,6 +741,10 @@
     "formidable": {
       "version": "1.0.17",
       "from": "formidable@>=1.0.0 <1.1.0"
+    },
+    "forwarded": {
+      "version": "0.1.0",
+      "from": "forwarded@>=0.1.0 <0.2.0"
     },
     "foxy": {
       "version": "11.1.4",
@@ -1430,6 +1484,10 @@
       "version": "1.0.0",
       "from": "invert-kv@>=1.0.0 <2.0.0"
     },
+    "ipaddr.js": {
+      "version": "1.0.5",
+      "from": "ipaddr.js@1.0.5"
+    },
     "is-binary-path": {
       "version": "1.0.1",
       "from": "is-binary-path@>=1.0.0 <2.0.0"
@@ -1670,6 +1728,10 @@
       "version": "1.0.1",
       "from": "map-obj@>=1.0.0 <2.0.0"
     },
+    "media-typer": {
+      "version": "0.3.0",
+      "from": "media-typer@0.3.0"
+    },
     "memory-fs": {
       "version": "0.3.0",
       "from": "memory-fs@>=0.3.0 <0.4.0"
@@ -1677,6 +1739,14 @@
     "meow": {
       "version": "3.3.0",
       "from": "meow@3.3.0"
+    },
+    "merge-descriptors": {
+      "version": "1.0.1",
+      "from": "merge-descriptors@1.0.1"
+    },
+    "methods": {
+      "version": "1.1.2",
+      "from": "methods@>=1.1.2 <1.2.0"
     },
     "micromatch": {
       "version": "2.3.5",
@@ -1844,6 +1914,10 @@
       "version": "2.3.0",
       "from": "on-finished@>=2.3.0 <2.4.0"
     },
+    "on-headers": {
+      "version": "1.0.1",
+      "from": "on-headers@>=1.0.1 <1.1.0"
+    },
     "once": {
       "version": "1.3.3",
       "from": "once@>=1.3.0 <2.0.0"
@@ -1885,6 +1959,10 @@
     "options": {
       "version": "0.0.6",
       "from": "options@>=0.0.5"
+    },
+    "original": {
+      "version": "1.0.0",
+      "from": "original@>=0.0.5"
     },
     "os-browserify": {
       "version": "0.1.2",
@@ -1942,6 +2020,10 @@
       "version": "0.11.15",
       "from": "path-platform@>=0.11.15 <0.12.0"
     },
+    "path-to-regexp": {
+      "version": "0.1.7",
+      "from": "path-to-regexp@0.1.7"
+    },
     "pbkdf2": {
       "version": "3.0.4",
       "from": "pbkdf2@>=3.0.3 <4.0.0"
@@ -1984,6 +2066,10 @@
       "version": "1.0.6",
       "from": "process-nextick-args@>=1.0.6 <1.1.0"
     },
+    "proxy-addr": {
+      "version": "1.0.10",
+      "from": "proxy-addr@>=1.0.10 <1.1.0"
+    },
     "prr": {
       "version": "0.0.0",
       "from": "prr@>=0.0.0 <0.1.0"
@@ -2011,6 +2097,10 @@
     "querystring-es3": {
       "version": "0.2.1",
       "from": "querystring-es3@>=0.2.0 <0.3.0"
+    },
+    "querystringify": {
+      "version": "0.0.3",
+      "from": "querystringify@>=0.0.0 <0.1.0"
     },
     "randomatic": {
       "version": "1.1.5",
@@ -2182,6 +2272,24 @@
         }
       }
     },
+    "sockjs": {
+      "version": "0.3.15",
+      "from": "sockjs@>=0.3.15 <0.4.0"
+    },
+    "sockjs-client": {
+      "version": "1.0.3",
+      "from": "sockjs-client@>=1.0.3 <2.0.0",
+      "dependencies": {
+        "faye-websocket": {
+          "version": "0.7.3",
+          "from": "faye-websocket@>=0.7.3 <0.8.0"
+        },
+        "json3": {
+          "version": "3.3.2",
+          "from": "json3@>=3.3.2 <4.0.0"
+        }
+      }
+    },
     "source-list-map": {
       "version": "0.1.5",
       "from": "source-list-map@>=0.1.0 <0.2.0"
@@ -2197,6 +2305,10 @@
     "stream-browserify": {
       "version": "2.0.1",
       "from": "stream-browserify@>=2.0.0 <3.0.0"
+    },
+    "stream-cache": {
+      "version": "0.0.2",
+      "from": "stream-cache@>=0.0.1 <0.1.0"
     },
     "stream-combiner2": {
       "version": "1.1.1",
@@ -2316,6 +2428,10 @@
       "version": "0.4.2",
       "from": "tunnel-agent@>=0.4.1 <0.5.0"
     },
+    "type-is": {
+      "version": "1.6.11",
+      "from": "type-is@>=1.6.6 <1.7.0"
+    },
     "typedarray": {
       "version": "0.0.6",
       "from": "typedarray@>=0.0.5 <0.1.0"
@@ -2392,6 +2508,10 @@
         }
       }
     },
+    "url-parse": {
+      "version": "1.0.5",
+      "from": "url-parse@>=1.0.1 <2.0.0"
+    },
     "utf-8-validate": {
       "version": "1.2.1",
       "from": "utf-8-validate@>=1.2.0 <1.3.0"
@@ -2411,6 +2531,10 @@
     "utils-merge": {
       "version": "1.0.0",
       "from": "utils-merge@1.0.0"
+    },
+    "vary": {
+      "version": "1.1.0",
+      "from": "vary@>=1.1.0 <1.2.0"
     },
     "virtual-dom": {
       "version": "2.1.1",
@@ -2461,6 +2585,54 @@
     "webpack-core": {
       "version": "0.6.8",
       "from": "webpack-core@>=0.6.0 <0.7.0"
+    },
+    "webpack-dev-middleware": {
+      "version": "1.5.1",
+      "from": "webpack-dev-middleware@>=1.4.0 <2.0.0",
+      "dependencies": {
+        "mime": {
+          "version": "1.3.4",
+          "from": "mime@>=1.3.4 <2.0.0"
+        }
+      }
+    },
+    "webpack-dev-server": {
+      "version": "1.14.1",
+      "from": "webpack-dev-server@*",
+      "dependencies": {
+        "ansi-regex": {
+          "version": "2.0.0",
+          "from": "ansi-regex@>=2.0.0 <3.0.0"
+        },
+        "express": {
+          "version": "4.13.4",
+          "from": "express@>=4.13.3 <5.0.0"
+        },
+        "qs": {
+          "version": "4.0.0",
+          "from": "qs@4.0.0"
+        },
+        "strip-ansi": {
+          "version": "3.0.0",
+          "from": "strip-ansi@>=3.0.0 <4.0.0"
+        },
+        "supports-color": {
+          "version": "3.1.2",
+          "from": "supports-color@>=3.1.1 <4.0.0"
+        },
+        "vary": {
+          "version": "1.0.1",
+          "from": "vary@>=1.0.1 <1.1.0"
+        }
+      }
+    },
+    "websocket-driver": {
+      "version": "0.6.4",
+      "from": "websocket-driver@>=0.5.1"
+    },
+    "websocket-extensions": {
+      "version": "0.1.1",
+      "from": "websocket-extensions@>=0.1.1"
     },
     "weinre": {
       "version": "2.0.0-pre-I0Z7U9OV",

@@ -31,7 +31,8 @@
     "ts-loader": "*",
     "typescript": "*",
     "virtual-dom": "*",
-    "webpack": "*"
+    "webpack": "*",
+    "webpack-dev-server": "*"
   },
   "version": "0.1.0",
   "scripts": {
