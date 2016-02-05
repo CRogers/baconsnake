@@ -19,11 +19,11 @@ function snakeHeadPosition(
 
     const ups: Stream<Keys> = keyPresses.filter(equalTo(Keys.UP));
 
-    const headPostion: Property<Position> = ups.scan(initialHeadPosition, (lastHeadPosition, upKeyPress) => {
+    const headPosition: Property<Position> = ups.scan(initialHeadPosition, (lastHeadPosition, upKeyPress) => {
         return lastHeadPosition.advance(Direction.up())
     });
 
-    return headPostion;
+    return headPosition;
 }
 
 export function snake(width: number, height: number, keyPresses: Stream<Keys>): Property<Snake> {
