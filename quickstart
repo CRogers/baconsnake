@@ -1,0 +1,12 @@
+#!/bin/bash
+
+function install_nix() {
+    if ! ls /nix >/dev/null 2>&1; then
+        echo "Installing the nix pacakge manager: http://nixos.org/nix/"
+        curl https://nixos.org/nix/install | sh
+    fi
+}
+
+install_nix
+nix-shell --run "npm install"
+nix-shell --run "./webpack"
