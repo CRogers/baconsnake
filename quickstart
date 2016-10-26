@@ -8,5 +8,9 @@ function install_nix() {
 }
 
 install_nix
+
+echo "Loading nix into shell"
+. ~/.nix-profile/etc/profile.d/nix.sh
+
 nix-shell --run "npm install"
 nix-shell --run "./webpack"
