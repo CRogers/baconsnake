@@ -11,13 +11,13 @@ Instructions
 
 This is a two part exercise. There are checkpoint branches for each part:
 
-* Start: `part1`/`part1-js`
-* Midpoint: `part2`/`part2-js`
-* Final solution: `part3`
+* Start: `part1-ts`
+* Midpoint: `part2-ts`
+* Final solution: `part3-ts`
 
-The `partX` are coffeescript versions. The `partX-js` branches are javascript version. To start:
+To start:
 
-1. `git checkout part1` (or `part1-js` for the js version)
+1. `git checkout part1-ts`
 2. Follow the setup instructions on the readme page for that branch
-3. Look at the goals section on the webpage after running `./gulp serve`. You can also checkout `part2` to see the behaviour you need to implement.
-4. Repeat for part2
+3. Look at the goals section on the webpage after running. You can also checkout `part2-ts` to see the behaviour you need to implement.
+4. Repeat for part2-ts
