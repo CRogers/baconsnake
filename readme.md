@@ -11,13 +11,13 @@ Instructions
 
 This is a two part exercise. There are checkpoint branches for each part:
 
-* Start: `part1-ts`
-* Midpoint: `part2-ts`
-* Final solution: `part3-ts`
+* Start: `part1`
+* Midpoint: `part2`
+* Final solution: `part3`
 
 To start:
 
-1. `git checkout part1-ts`
+1. `git checkout part1`
 2. Follow the setup instructions on the readme page for that branch
-3. Look at the goals section on the webpage after running. You can also checkout `part2-ts` to see the behaviour you need to implement.
-4. Repeat for part2-ts
+3. Look at the goals section on the webpage after running. You can also checkout `part2` to see the behaviour you need to implement.
+4. Repeat for part2
