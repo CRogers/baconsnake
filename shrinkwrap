@@ -1,0 +1,3 @@
+#!/bin/sh
+
+npm shrinkwrap --dev && node ./tasks/shrinkwrap-remove-resolved.js
