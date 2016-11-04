@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import { Position } from './position.ts'
+import { Position } from './position'
 
 export type Turn = (direction: Direction) => Direction;
 

@@ -3,11 +3,11 @@
 import * as _ from 'lodash'
 import * as Bacon from 'baconjs'
 
-import { Stream, Property } from './bacon-extras.ts'
-import { Position } from './position.ts'
-import { Direction } from './direction.ts'
-import { Keys } from './inputs.ts'
-import { Snake } from './types.ts'
+import { Stream, Property } from './bacon-extras'
+import { Position } from './position'
+import { Direction } from './direction'
+import { Keys } from './inputs'
+import { Snake } from './types'
 
 function equalTo<T>(expected: T) {
     return (actual: T) => actual === expected

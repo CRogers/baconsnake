@@ -1,7 +1,7 @@
 /// <reference path="../typings/tsd.d.ts" />
 
 import { h, diff, patch, create } from 'virtual-dom'
-import { Property, Stream, Observable } from './bacon-extras.ts'
+import { Property, Stream, Observable } from './bacon-extras'
 
 export function vdomBaconjsRenderer(
     parentElement: Element,
