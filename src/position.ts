@@ -1,6 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import {Direction} from "./direction.ts";
+import {Direction} from "./direction";
 function correctModulo(a: number, m: number): number {
   return ((a % m) + m) % m
 }

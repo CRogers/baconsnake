@@ -1,4 +1,4 @@
-import { Position } from './position.ts'
+import { Position } from './position'
 
 export interface Snake {
     head: Position,

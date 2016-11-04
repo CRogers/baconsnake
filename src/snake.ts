@@ -3,11 +3,11 @@
 import * as _ from 'lodash'
 import * as Bacon from 'baconjs'
 
-import { Stream, Property, slidingWindowBy } from './bacon-extras.ts'
-import { Position } from './position.ts'
-import { Direction, Turn } from './direction.ts'
-import { Keys } from './inputs.ts'
-import { Snake } from './types.ts'
+import { Stream, Property, slidingWindowBy } from './bacon-extras'
+import { Position } from './position'
+import { Direction, Turn } from './direction'
+import { Keys } from './inputs'
+import { Snake } from './types'
 
 function equalTo<T>(expected: T) {
     return (actual: T) => actual === expected
@@ -60,4 +60,10 @@ export function snake(width: number, height: number, keyPresses: Stream<Keys>): 
         tail: slidingWindowBy(headPosition, tailLength),
         food: foodPosition
     });
+<<<<<<< HEAD
 }
+=======
+
+    return snakeRenderData;
+}
+>>>>>>> 192c02d... Fix .ts file resolution

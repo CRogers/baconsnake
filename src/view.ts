@@ -3,8 +3,8 @@
 import { h } from 'virtual-dom'
 import * as _ from 'lodash'
 
-import { Position } from './position.ts'
-import { Snake } from './types.ts'
+import { Position } from './position'
+import { Snake } from './types'
 
 function px(num) { return `${num}px` }
 
