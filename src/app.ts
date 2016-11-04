@@ -4,10 +4,10 @@ import './libsetup.ts'
 
 import * as $ from 'jquery'
 
-import { keyPresses } from './inputs.ts'
-import { grid } from './view.ts'
-import { snake } from './snake.ts';
-import { vdomBaconjsRenderer } from './virtual-dom-renderer.ts'
+import { keyPresses } from './inputs'
+import { grid } from './view'
+import { snake } from './snake';
+import { vdomBaconjsRenderer } from './virtual-dom-renderer'
 
 const WIDTH = 10;
 const HEIGHT = 10;

@@ -3,7 +3,7 @@
 import * as _ from 'lodash'
 import * as $ from 'jquery'
 
-import { Stream } from './bacon-extras.ts'
+import { Stream } from './bacon-extras'
 
 export enum Keys {
   LEFT = 37,
