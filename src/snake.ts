@@ -60,10 +60,4 @@ export function snake(width: number, height: number, keyPresses: Stream<Keys>): 
         tail: slidingWindowBy(headPosition, tailLength),
         food: foodPosition
     });
-<<<<<<< HEAD
 }
-=======
-
-    return snakeRenderData;
-}
->>>>>>> 192c02d... Fix .ts file resolution
