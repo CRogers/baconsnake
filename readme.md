@@ -21,3 +21,8 @@ To start:
 2. Follow the setup instructions on the readme page for that branch
 3. Look at the goals section on the webpage after running. You can also checkout `part2` to see the behaviour you need to implement.
 4. Repeat for part2
+
+Presentation
+---
+
+I usually introduce FRP before getting people to start, [this is presentation I use](https://www.dropbox.com/s/uae9yadeeglzh5d/Baconsnake.pptx?dl=0).
